@@ -1,0 +1,323 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "tier": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2021-05-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Network/loadBalancers",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "Microsoft.Network/publicIPAddresses/DemoIP"
+            ],
+            "tags": {},
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "DemoFront",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/publicIPAddresses/DemoIP"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "DemoBknd"
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "DemoHP",
+                        "properties": {
+                            "protocol": "Tcp",
+                            "port": 80,
+                            "requestPath": null,
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "DemoINB",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/frontendIPConfigurations/DemoFront"
+                            },
+                            "frontendPort": 80,
+                            "backendPort": 80,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "TCP",
+                            "loadDistribution": "Default",
+                            "probe": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/probes/DemoHP"
+                            },
+                            "disableOutboundSnat": true,
+                            "enableTcpReset": false,
+                            "backendAddressPools": [
+                                {
+                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/backendAddressPools/DemoBknd"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "inboundNatRules": [
+                    {
+                        "name": "DemoINBnat",
+                        "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/inboundNatRules/DemoINBnat",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/frontendIPConfigurations/DemoFront"
+                            },
+                            "backendPort": 81,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "TCP",
+                            "enableTcpReset": false,
+                            "frontendPort": 81
+                        }
+                    }
+                ],
+                "outboundRules": []
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        {
+            "apiVersion": "2020-08-01",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "name": "DemoIP",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "properties": {
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "type": "Microsoft.Resources/deployments",
+            "name": "NicUpdate-55f0bc60-60da-4f33-8535-f2ac54c70a57-20220310182554",
+            "resourceGroup": "user-shshaik",
+            "dependsOn": [
+                "Microsoft.Network/loadBalancers/DemoLB"
+            ],
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {},
+                "template": {
+                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2021-03-01",
+                            "type": "Microsoft.Network/networkInterfaces",
+                            "name": "demovm1634",
+                            "location": "eastus",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "resourceGuid": "b3a14442-cb72-4e07-89be-990f1ba40078",
+                                "ipConfigurations": [
+                                    {
+                                        "name": "ipconfig1",
+                                        "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkInterfaces/demovm1634/ipConfigurations/ipconfig1",
+                                        "etag": "W/\"3e124f29-d02c-477d-b606-21d0179e7582\"",
+                                        "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "privateIPAddress": "10.0.0.7",
+                                            "privateIPAllocationMethod": "Dynamic",
+                                            "publicIPAddress": {
+                                                "name": "demoVM1-ip",
+                                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/publicIPAddresses/demoVM1-ip",
+                                                "properties": {
+                                                    "provisioningState": "Succeeded",
+                                                    "resourceGuid": "b761532f-3b9c-4427-b023-2b59f6423cef",
+                                                    "publicIPAddressVersion": "IPv4",
+                                                    "publicIPAllocationMethod": "Dynamic",
+                                                    "idleTimeoutInMinutes": 4,
+                                                    "ipTags": [],
+                                                    "ipConfiguration": {
+                                                        "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkInterfaces/demovm1634/ipConfigurations/ipconfig1"
+                                                    },
+                                                    "deleteOption": "Delete"
+                                                },
+                                                "type": "Microsoft.Network/publicIPAddresses",
+                                                "sku": {
+                                                    "name": "Basic",
+                                                    "tier": "Regional"
+                                                }
+                                            },
+                                            "subnet": {
+                                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet/subnets/default"
+                                            },
+                                            "primary": true,
+                                            "privateIPAddressVersion": "IPv4",
+                                            "loadBalancerBackendAddressPools": [
+                                                {
+                                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/backendAddressPools/DemoBknd"
+                                                }
+                                            ],
+                                            "loadBalancerInboundNatRules": []
+                                        }
+                                    }
+                                ],
+                                "dnsSettings": {
+                                    "dnsServers": [],
+                                    "appliedDnsServers": [],
+                                    "internalDomainNameSuffix": "ab1awoqolutercmsv3p5ifhxtg.bx.internal.cloudapp.net"
+                                },
+                                "macAddress": "00-0D-3A-57-82-13",
+                                "enableAcceleratedNetworking": true,
+                                "vnetEncryptionSupported": false,
+                                "enableIPForwarding": false,
+                                "networkSecurityGroup": {
+                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/demoVM1-nsg"
+                                },
+                                "primary": true,
+                                "virtualMachine": {
+                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachines/demoVM1"
+                                },
+                                "hostedWorkloads": [],
+                                "tapConfigurations": [],
+                                "nicType": "Standard"
+                            },
+                            "tags": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "type": "Microsoft.Resources/deployments",
+            "name": "NicUpdate-ea9e58a0-47cc-4ad6-b6b2-464458b3dccf-20220310182554",
+            "resourceGroup": "user-shshaik",
+            "dependsOn": [
+                "Microsoft.Network/loadBalancers/DemoLB"
+            ],
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {},
+                "template": {
+                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2021-03-01",
+                            "type": "Microsoft.Network/networkInterfaces",
+                            "name": "demovm2938",
+                            "location": "eastus",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "resourceGuid": "3be426ba-c635-47e0-b70e-bf31b3e3efff",
+                                "ipConfigurations": [
+                                    {
+                                        "name": "ipconfig1",
+                                        "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkInterfaces/demovm2938/ipConfigurations/ipconfig1",
+                                        "etag": "W/\"0909151f-20f0-43cd-ab23-8c38bc75b468\"",
+                                        "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "privateIPAddress": "10.0.0.8",
+                                            "privateIPAllocationMethod": "Dynamic",
+                                            "publicIPAddress": {
+                                                "name": "demoVM2-ip",
+                                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/publicIPAddresses/demoVM2-ip",
+                                                "properties": {
+                                                    "provisioningState": "Succeeded",
+                                                    "resourceGuid": "79edc80a-1a12-4c42-98fc-4d106b7238a7",
+                                                    "publicIPAddressVersion": "IPv4",
+                                                    "publicIPAllocationMethod": "Dynamic",
+                                                    "idleTimeoutInMinutes": 4,
+                                                    "ipTags": [],
+                                                    "ipConfiguration": {
+                                                        "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkInterfaces/demovm2938/ipConfigurations/ipconfig1"
+                                                    },
+                                                    "deleteOption": "Delete"
+                                                },
+                                                "type": "Microsoft.Network/publicIPAddresses",
+                                                "sku": {
+                                                    "name": "Basic",
+                                                    "tier": "Regional"
+                                                }
+                                            },
+                                            "subnet": {
+                                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet/subnets/default"
+                                            },
+                                            "primary": true,
+                                            "privateIPAddressVersion": "IPv4",
+                                            "loadBalancerBackendAddressPools": [
+                                                {
+                                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/DemoLB/backendAddressPools/DemoBknd"
+                                                }
+                                            ],
+                                            "loadBalancerInboundNatRules": []
+                                        }
+                                    }
+                                ],
+                                "dnsSettings": {
+                                    "dnsServers": [],
+                                    "appliedDnsServers": [],
+                                    "internalDomainNameSuffix": "ab1awoqolutercmsv3p5ifhxtg.bx.internal.cloudapp.net"
+                                },
+                                "macAddress": "00-22-48-28-43-50",
+                                "enableAcceleratedNetworking": true,
+                                "vnetEncryptionSupported": false,
+                                "enableIPForwarding": false,
+                                "networkSecurityGroup": {
+                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/demoVM2-nsg"
+                                },
+                                "primary": true,
+                                "virtualMachine": {
+                                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachines/demoVM2"
+                                },
+                                "hostedWorkloads": [],
+                                "tapConfigurations": [],
+                                "nicType": "Standard"
+                            },
+                            "tags": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}

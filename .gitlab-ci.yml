@@ -1,0 +1,19 @@
+stages:
+    - azure-cft-test
+    
+azure-cft-test:
+  stage: azure-cft-test
+  script: 
+    - pwd
+    - az --version
+    - az config set extension.use_dynamic_install=yes_without_prompt
+    - export PYTHONPATH="$PYTHONPATH:$PWD/lib"
+    - cd tests/Azure-automation/scripts/Demo
+    - python3 main.py $CLOUD_CONSOLE_PRINCIPAL $CLOUD_CONSOLE_PASSWORD
+  artifacts:
+    when: always
+    expire_in: 1 week
+    paths:
+      - tests/Azure-automation/scripts/Demo/*.json
+  tags:
+    - shell

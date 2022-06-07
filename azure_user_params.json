@@ -1,0 +1,8 @@
+{"availabilitySetName": "DemoAS",
+"adminUsername": "demouser",
+"adminPassword": "Demouser1234",
+"location": "eastus",
+"CLOUD_CONSOLE_RG": "user-shshaik",
+"CLOUD_CONSOLE_TENANTID": "dd3dfd2f-6a3b-40d1-9be0-bf8327d81c50",
+"SUBSCRIPTION_ID_ENG": "e1e590f6-555e-4dc0-8472-be7fab700b51"
+}
