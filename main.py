@@ -10,6 +10,8 @@ password = sys.argv[2]
 
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
+print(az_id)
+'''
 if az_id:
     
     if CONFIG:
@@ -158,3 +160,4 @@ else:
     print("Error: Unable to connect to Azure CLI")
 
 
+'''
