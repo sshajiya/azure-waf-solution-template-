@@ -8,9 +8,9 @@ username = azure_user_data["adminUsername"]
 vm_password = azure_user_data["adminPassword"]
 
 #flag declaration
-CONFIG=True
+CONFIG=False
 TEST=False
-DECONFIG=False
+DECONFIG=True
 
 #Variable Declaration
 vm_name= "Nginx" 
