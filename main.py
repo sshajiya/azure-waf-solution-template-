@@ -1,7 +1,5 @@
 import time, os, sys
-from utils import *
-from var import *
-import attackslib,azurelib
+import attackslib,var,utils
 import json
 
 #Get the service principal and secret values
