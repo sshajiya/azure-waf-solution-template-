@@ -17,7 +17,7 @@ if az_id:
     if CONFIG:
         """If login success, then deploy resources."""
         print("***********AZ Login Sucessfull!! \n\n\n\n\t\t Deploying the Infra using Azure ARM templates*************")
-    
+        '''
         # Availability Set
         print("Availability Set Creation....")
         as_deploy=az_arm_deploy(resource_group, template_as, param_as, resource="AS")
@@ -51,11 +51,13 @@ if az_id:
         az_get_metric_alert(resource_group, alert1)
         az_create_metric_alert(resource_group, VM1, alert2)
         az_get_metric_alert(resource_group, alert2)
-        
+           
         #Create the Dashboard
         print(az_arm_deploy(resource_group,template_db,template_dbparam,resource="DB"))
         if verfiy_status(db_nap,db_name):
             print("Dashboard has been created sucessfully....")
+        '''
+        az_arm_deploy(resource_group,autoscale_template,autoscale_param)
     if TEST:
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
