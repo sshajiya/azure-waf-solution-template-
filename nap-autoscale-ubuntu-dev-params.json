@@ -98,7 +98,7 @@
             "value": "demouser"
         },
         "adminPassword": {
-            "value": null
+            "value": "Demouser1234"
         },
         "autoScaleDefault": {
             "value": "2"
