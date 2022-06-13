@@ -17,19 +17,6 @@ if az_id:
     if CONFIG:
         """If login success, then deploy resources."""
         print("***********AZ Login Sucessfull!! \n\n\n\n\t\t Deploying the Infra using Azure ARM templates*************")
-        '''
-        #Monitor:
-        print("Create the metric alert")
-        az_create_metric_alert(resource_group, VM2, alert1)
-        az_get_metric_alert(resource_group, alert1)
-        az_create_metric_alert(resource_group, VM1, alert2)
-        az_get_metric_alert(resource_group, alert2)
-           
-        #Create the Dashboard
-        print(az_arm_deploy(resource_group,template_db,template_dbparam,resource="DB"))
-        if verfiy_status(db_nap,db_name):
-            print("Dashboard has been created sucessfully....")
-        '''
         print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
         print(az_get_cmd_op(get_vmss_inst))
         inst_info=az_get_cmd_op(get_vmss)
