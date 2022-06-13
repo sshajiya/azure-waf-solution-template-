@@ -8,8 +8,8 @@ username = azure_user_data["adminUsername"]
 vm_password = azure_user_data["adminPassword"]
 
 #flag declaration
-CONFIG=True
-TEST=False
+CONFIG=False
+TEST=True
 DECONFIG=False
 
 #Variable Declaration
@@ -42,15 +42,20 @@ azure_user_json= "azure_user_params.json"
 template_db="dashboard.json"
 template_dbparam="dashboard-params.json"
 #########
+vmssName= "azure-cft"
+vmss_lb= "azure-cft-lb"
+get_lb_pubIP="az network public-ip show --resource-group " + resource_group + " --name " + vmss_lb + " --query [ipAddress] --output tsv"
+sg_name= "basicNsg" + vnet_name + "-nic01"
+http_rule= "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name httpRule --direction inbound --destination-port-range 80 --access allow --priority 102""
+ssh_rule=  "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name sshRule --direction inbound --destination-port-range 22 --access allow --priority 101"
 stop_vm1= "az vm stop -g " + resource_group + " -n " + VM1
 start_vm1= "az vm start -g " + resource_group + " -n " + VM1
 cmd_as_show="az vm availability-set show --name  " + AS_name + " --resource-group " + resource_group 
 cmd_vm1_show= "az vm get-instance-view --name " + VM1 + " --resource-group " + resource_group
 cmd_vm2_show= "az vm get-instance-view --name " + VM2 + " --resource-group " + resource_group
 cmd_lb_show= "az network lb frontend-ip list -g " + resource_group + " --lb-name " + LB_name
-get_lb_pubIP="az network public-ip show --resource-group " + resource_group + " --name DemoIP --query [ipAddress] --output tsv"
-vmssName= "azure-cft"
-vmss_lb= "azure-cft-lb"
+
+
 db_name= "Dashboard-NAP-Test"
 db_nap="az portal dashboard show --name " + db_name + " --resource-group " + resource_group
 
