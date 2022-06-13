@@ -18,7 +18,7 @@ if az_id:
         """If login success, then deploy resources."""
         print("***********AZ Login Sucessfull!! \n\n\n\n\t\t Deploying the Infra using Azure ARM templates*************")
         print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
-        print(az_get_cmd_op(get_vmss_inst))
+        #print(az_get_cmd_op(get_vmss))
         inst_info=az_get_cmd_op(get_vmss)
         ip=get_ip(inst_info)
         port_list=get_port_lst(inst_info)
