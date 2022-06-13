@@ -9,16 +9,16 @@
             "value": "Premium_LRS"
         },
         "virtualNetworkId": {
-            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet"
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet2"
         },
         "virtualNetworkName": {
-            "value": "user-shshaik-vnet"
+            "value": "user-shshaik-vnet2"
         },
         "networkSecurityGroups": {
             "value": [
                 {
-                    "name": "basicNsguser-shshaik-vnet-nic01",
-                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet-nic01",
+                    "name": "basicNsguser-shshaik-vnet2-nic01",
+                    "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet2-nic01",
                     "rules": []
                 }
             ]
@@ -26,9 +26,9 @@
         "networkInterfaceConfigurations": {
             "value": [
                 {
-                    "name": "user-shshaik-vnet-nic01",
+                    "name": "user-shshaik-vnet2-nic01",
                     "primary": true,
-                    "subnetId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet/subnets/default",
+                    "subnetId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/virtualNetworks/user-shshaik-vnet2/subnets/default",
                     "applicationGatewayBackendAddressPools": [],
                     "loadBalancerBackendAddressPools": [
                         {
@@ -42,8 +42,8 @@
                         }
                     ],
                     "enableAcceleratedNetworking": true,
-                    "nsgName": "basicNsguser-shshaik-vnet-nic01",
-                    "nsgId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet-nic01",
+                    "nsgName": "basicNsguser-shshaik-vnet2-nic01",
+                    "nsgId": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/networkSecurityGroups/basicNsguser-shshaik-vnet2-nic01",
                     "pipName": ""
                 }
             ]
