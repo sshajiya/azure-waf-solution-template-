@@ -27,10 +27,16 @@ if az_id:
     if TEST:
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
+        print("Rules creation")
+        print(az_get_cmd_op(http_rule))
+        print(az_get_cmd_op(ssh_rule))
         inst_info=az_get_cmd_op(get_vmss)
+        print("inst_info")
         ip=get_ip(inst_info)
+        print("ip")
         port_list=get_port_lst(inst_info)
-        #lb_ip=az_get_cmd_op(get_lb_pubIP)
+        print("port_list")
+        lb_ip=az_get_cmd_op(get_lb_pubIP)
         lb_ip=ip[0]
         
         print("Load balancer public ip:",lb_ip)
@@ -39,6 +45,7 @@ if az_id:
             print("************Able to access the VM through Load balancer Sucessfully!!!*******************")
         else:
             print("************ ERROR: Unable to access the VM through Load balancer*******************")
+        '''
         print("Install web application - Arcadia in VM2")
         host_info=az_get_vm_info(VM2)
         host = get_ip(host_info)
@@ -116,6 +123,7 @@ if az_id:
             print("AutoScale functionality is tested for nginx image")
         else:
             print("Error: AutoScale functionality is failed!!!")
+        '''
     if DECONFIG:
         #De-config    
         #time.sleep(60)     
