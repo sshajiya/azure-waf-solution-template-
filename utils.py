@@ -90,7 +90,7 @@ def change_lb_param_files(template_file, param_file, azure_user_json):
     f.close()
 
 
-def az_arm_deploy(resource_group, template_file, param_file, azure_user_json=azure_user_json, resource="VM"):
+def az_arm_deploy(resource_group, template_file, param_file, azure_user_json=azure_user_json, resource="default"):
     """Deploy resources in Azure using templates."""
     try:
         if resource == "VM":
@@ -103,7 +103,7 @@ def az_arm_deploy(resource_group, template_file, param_file, azure_user_json=azu
             change_lb_param_files(template_file, param_file, azure_user_json)
         elif resource == "DB":
             #change_lb_param_files(template_file, param_file, azure_user_json)
-            print("Dashboard Creation!!!")
+            print("Dashboard Creation!!!")            
 
         az_deploy= "az deployment group create --resource-group " + resource_group + " --template-file " + template_file + " --parameters " + param_file + " --output table "   
         print(az_deploy)
