@@ -57,7 +57,7 @@ if az_id:
         if verfiy_status(db_nap,db_name):
             print("Dashboard has been created sucessfully....")
         '''
-        az_arm_deploy(resource_group,autoscale_template,autoscale_param)
+        print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
     if TEST:
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
