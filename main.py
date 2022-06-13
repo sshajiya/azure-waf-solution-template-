@@ -24,32 +24,6 @@ if az_id:
         port_list=get_port_lst(inst_info)
         print(port_list)
         
-        
-        
-        '''
-        #Auto-scale Test
-        print("\t************AutoScale TEST !!!!******************")
-        inst_info=az_get_cmd_op(get_vmss)
-        ip=get_ip(inst_info)
-        port_list=get_port_lst(inst_info)
-        #print("Current number of Instances:",port_list)
-        print("Login to the instances and impose HIGH TRAFFIC using stress module")
-        for port in port_list:
-            print("Connecting to ",ip[0],":",port)
-            ssh_id=ssh_connect(ip[0],port,username,vm_password)
-            ssh_id_lst.append(ssh_id)
-            print(exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10))
-        for ssh_id in ssh_id_lst:
-            ssh_id.close()
-        print("Wait for 420 seconds [7 minutes] and verify that autoscaling has takes places")
-        time.sleep(500)
-        inst_info= az_get_cmd_op(get_vmss)   
-        print("Number of Instances after imposing high traffic\n\n\n\n",inst_info) 
-        if len(get_port_lst(inst_info)) >= 2:
-            print("AutoScale functionality is tested for nginx image")
-        else:
-            print("Error: AutoScale functionality is failed!!!")
-        '''
     if TEST:
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
