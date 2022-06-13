@@ -18,33 +18,6 @@ if az_id:
         """If login success, then deploy resources."""
         print("***********AZ Login Sucessfull!! \n\n\n\n\t\t Deploying the Infra using Azure ARM templates*************")
         '''
-        # Availability Set
-        print("Availability Set Creation....")
-        as_deploy=az_arm_deploy(resource_group, template_as, param_as, resource="AS")
-        print("verify AS:\n\n",as_deploy,az_get_cmd_op(cmd_as_show))
-
-        # VM's
-        print("Deploy Virtual machines....",VM1,VM2)
-        print(az_arm_deploy(resource_group,template_vm1,param_vm1))
-        print(az_arm_deploy(resource_group, template_vm2, param_vm2))
-        
-        #load balancers
-        print("Deploy Load balancer....",LB_name)
-        print(az_arm_deploy(resource_group, template_lb, param_lb, resource="LB"))
-
-        #Auto-scale
-        print("Deploy VMSS...",vmssName)
-        print(az_get_cmd_op(create_vmss))
-        print("Verify the VMSS  :",vmssName)
-        inst_info=az_get_cmd_op(get_vmss)
-        ip=get_ip(inst_info)
-        port_list=get_port_lst(inst_info)
-        print(inst_info,"\n\n\n\n",ip,port_list)   
-        print("Creating autoscale Profile,rules")
-        print(az_get_cmd_op(profile1))
-        print(az_get_cmd_op(rule1))
-        print(az_get_cmd_op(rule2))
-
         #Monitor:
         print("Create the metric alert")
         az_create_metric_alert(resource_group, VM2, alert1)
@@ -58,10 +31,47 @@ if az_id:
             print("Dashboard has been created sucessfully....")
         '''
         print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
+        print(az_get_cmd_op(get_vmss_inst))
+        inst_info=az_get_cmd_op(get_vmss)
+        ip=get_ip(inst_info)
+        port_list=get_port_lst(inst_info)
+        print(port_list)
+        
+        
+        
+        '''
+        #Auto-scale Test
+        print("\t************AutoScale TEST !!!!******************")
+        inst_info=az_get_cmd_op(get_vmss)
+        ip=get_ip(inst_info)
+        port_list=get_port_lst(inst_info)
+        #print("Current number of Instances:",port_list)
+        print("Login to the instances and impose HIGH TRAFFIC using stress module")
+        for port in port_list:
+            print("Connecting to ",ip[0],":",port)
+            ssh_id=ssh_connect(ip[0],port,username,vm_password)
+            ssh_id_lst.append(ssh_id)
+            print(exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10))
+        for ssh_id in ssh_id_lst:
+            ssh_id.close()
+        print("Wait for 420 seconds [7 minutes] and verify that autoscaling has takes places")
+        time.sleep(500)
+        inst_info= az_get_cmd_op(get_vmss)   
+        print("Number of Instances after imposing high traffic\n\n\n\n",inst_info) 
+        if len(get_port_lst(inst_info)) >= 2:
+            print("AutoScale functionality is tested for nginx image")
+        else:
+            print("Error: AutoScale functionality is failed!!!")
+        '''
     if TEST:
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
-        lb_ip=az_get_cmd_op(get_lb_pubIP)
+        inst_info=az_get_cmd_op(get_vmss)
+        ip=get_ip(inst_info)
+        port_list=get_port_lst(inst_info)
+        #lb_ip=az_get_cmd_op(get_lb_pubIP)
+        lb_ip=ip[0]
+        
         print("Load balancer public ip:",lb_ip)
         print("Access the VM through Loadbalancer")
         if vfy_nginx(lb_ip,chk_def):
