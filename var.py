@@ -1,6 +1,7 @@
 import json
 
-azure_user_handler = open("azure_user_params.json", "r")
+azure_user_json= "azure_user_params.json"
+azure_user_handler = open(azure_user_json, "r")
 azure_user_data = json.load(azure_user_handler)
 tenantid = azure_user_data["CLOUD_CONSOLE_TENANTID"]
 resource_group = azure_user_data["CLOUD_CONSOLE_RG"]
