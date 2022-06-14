@@ -15,8 +15,8 @@ def az_login(principal,password,tenantid):
         sp_create = "az login --service-principal -u " + principal + " -p " + password + " --tenant " + tenantid
         az_cli_login = subprocess.run(sp_create, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
         return az_cli_login
-    except:
-        print(e)
+    except BaseException:
+        logging.exception("An exception was thrown!")
         return False
 
 
@@ -192,22 +192,16 @@ def ssh_connect(host,port,username,password):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_id=ssh.connect(host, port, username, password)
         return ssh;
-    except:
+    except BaseException:
+        logging.exception("An exception was thrown!")
         return False
 
         
 def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
-    print(command_lst)
     try:
         for cmd in command_lst:
-            print("command: ",cmd)
             stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=tout)
             lines = stdout.readlines()
-            print(lines)
-            #output = lines.decode("utf-8")
-            #output_err= stderr.readlines().decode("utf-8")
-            #print("Output: " ,output)
-            #print("OutputErr: " ,output_err)
         return True
     except BaseException:
         logging.exception("An exception was thrown!")
