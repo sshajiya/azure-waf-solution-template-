@@ -8,9 +8,9 @@ username = azure_user_data["adminUsername"]
 vm_password = azure_user_data["adminPassword"]
 
 #flag declaration
-CONFIG=False
-TEST=False
-DECONFIG=True
+CONFIG=True
+TEST=True
+DECONFIG=False
 
 #Variable Declaration
 autoscale_template= "nap-autoscale-ubuntu-dev.json"
