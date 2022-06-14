@@ -206,8 +206,6 @@ def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
             output_err= stderr.readlines().decode("utf-8")
             print("Output: " ,output)
             print("OutputErr: " ,output_err)
-            for l in lines: 
-                with open(log_file, "a+",encoding='utf-8') as file: file.write(str(l))
         return True
     except:
         return False
