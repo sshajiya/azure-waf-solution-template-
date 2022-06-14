@@ -223,7 +223,6 @@ def vfy_nginx(url,cond_chk):
         if "http" not in url:
             url="http://"+url
         data = urllib.request.urlopen(url).read()
-        #print(data)
         bsoup = BeautifulSoup(data, "html.parser")
         title = bsoup.find('title')
         print(title)
@@ -231,7 +230,8 @@ def vfy_nginx(url,cond_chk):
             return True
         else:
             return False
-    except:
+    except BaseException:
+        logging.exception("An exception was thrown!")
         return False
 
 
