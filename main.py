@@ -105,7 +105,7 @@ if az_id:
             exec_shell_cmd(ssh_id,apply_stress,log_file)
         
         logging.info("Minimum of 5min duration is required to trigger the scaling action - WaitTime: 7Minutes")
-        time.sleep(200)
+        time.sleep(400)
         inst_info= az_get_cmd_op(get_vmss)   
         vmss_ip_lst=get_ip(inst_info)
         print("Number of Instances after Imposing high traffic",vmss_ip_lst) 
