@@ -121,12 +121,14 @@ if az_id:
         #De-config    
         #time.sleep(60)     
         print("Destroying the Infra.")  
+        '''
         for alert in [alert1,alert2]:
             az_delete_metric_alert(resource_group,alert)
         for vm in [VM1,VM2]:
             print(az_arm_destroy(resource_group,vm))
         az_lb_destroy(resource_group,LB_name)
         az_as_destroy(resource_group,AS_name)    
+        '''
         for service in del_cfg:
             az_get_cmd_op(service)
     
