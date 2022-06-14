@@ -196,15 +196,16 @@ def ssh_connect(host,port,username,password):
 
         
 def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
+    print(command_lst)
     try:
         for cmd in command_lst:
             print("command: ",cmd)
-            stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=tout)
-            print(stdout,"\n\n\n",stderr)
+            stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=7)
             lines = stdout.readlines()
-            print(lines)
             output = lines.decode("utf-8")
+            output_err= stderr.readlines().decode("utf-8")
             print("Output: " ,output)
+            print("OutputErr: " ,output_err)
             for l in lines: 
                 with open(log_file, "a+",encoding='utf-8') as file: file.write(str(l))
         return True
