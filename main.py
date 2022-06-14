@@ -31,11 +31,11 @@ if az_id:
         print(az_get_cmd_op(http_rule))
         print(az_get_cmd_op(ssh_rule))
         inst_info=az_get_cmd_op(get_vmss)
-        print("inst_info")
+        print(inst_info)
         ip=get_ip(inst_info)
-        print("ip")
+        print(ip)
         port_list=get_port_lst(inst_info)
-        print("port_list")
+        print(port_list)
         lb_ip=az_get_cmd_op(get_lb_pubIP)
         lb_ip=ip[0]
         
