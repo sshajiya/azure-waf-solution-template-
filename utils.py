@@ -201,12 +201,13 @@ def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
     try:
         for cmd in command_lst:
             print("command: ",cmd)
-            stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=7)
+            stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=tout)
             lines = stdout.readlines()
-            output = lines.decode("utf-8")
-            output_err= stderr.readlines().decode("utf-8")
-            print("Output: " ,output)
-            print("OutputErr: " ,output_err)
+            print(lines)
+            #output = lines.decode("utf-8")
+            #output_err= stderr.readlines().decode("utf-8")
+            #print("Output: " ,output)
+            #print("OutputErr: " ,output_err)
         return True
     except BaseException:
         logging.exception("An exception was thrown!")
