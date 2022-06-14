@@ -14,133 +14,93 @@ az_id = az_login(principal,password,tenantid)
 print(az_id)
 
 if az_id:
-    
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: Module %(module)s :: Line No %(lineno)s :: %(message)s')
     if CONFIG:
         """If login success, then deploy resources."""
-        print("***********AZ Login Sucessfull!! \n\n\n\n\t\t Deploying the Infra using Azure ARM templates*************")
-        print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
-        #print(az_get_cmd_op(get_vmss))
-        inst_info=az_get_cmd_op(get_vmss)
-        ip=get_ip(inst_info)
-        port_list=get_port_lst(inst_info)
-        print(port_list)
+        logging.info("AZ Login Sucessfull!!")
+        logging.info(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
+        logging.info(az_get_cmd_op(http_rule))
+        logging.info(az_get_cmd_op(ssh_rule))
         
     if TEST:
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: Module %(module)s :: Line No %(lineno)s :: %(message)s')
-
-        ssh_id=ssh_connect("20.115.105.144",50000,username,vm_password)
+        #Get the instance details from Virtual machine scaleset
+        inst_info=az_get_cmd_op(get_vmss)
+        vmss_ip_lst=get_ip(inst_info)
+        vmss_port_list=get_port_lst(inst_info)        
+        logging.info(vmss_ip_lst,vmss_port_list)
+        logging.info(vmss_ip_lst,vmss_port_list)
+        
+        #NAP Functional Test
+        logging.info("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
+        if vfy_nginx(vmss_ip_lst[0],chk_def):
+            logging.info("NGINX Static Page Verification is Completed")
+        else:
+            logging.info("ERROR:  NGINX Static Page Verification is Failed!!!")
+        ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
         with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
         exec_shell_cmd(ssh_id,command_lst,log_file)
         time.sleep(10)
-        print(exec_shell_cmd(ssh_id,command_lst2,log_file))
-        if vfy_nginx("20.115.105.144",chk_str):
-            print("NGINX Static Page Verification is Completed")
-            logging.info("NGINX Static Page Verification is Completed!")
-        else:
-            print("Error")
-            logging.info("NGINX Static Page Verification is Failed!")
-        
-        '''
-        #Testing
-        print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
-        print("Rules creation")
-        print(az_get_cmd_op(http_rule))
-        print(az_get_cmd_op(ssh_rule))
-        inst_info=az_get_cmd_op(get_vmss)
-        print(inst_info)
-        vmss_ip_lst=get_ip(inst_info)
-        print(vmss_ip_lst)
-        vmss_port_list=get_port_lst(inst_info)
-        print(vmss_port_list)
-        print("Get the Load Balancer IP")
-        lb_ip=az_get_cmd_op(get_lb_pubIP)
-        
-        print("Load balancer public ip:",lb_ip)
-        print("Access the VM through Loadbalancer")
-        if vfy_nginx(vmss_ip_lst[0],chk_def):
-            print("************Able to access the VM through Load balancer Sucessfully!!!*******************")
-        else:
-            print("************ ERROR: Unable to access the VM through Load balancer*******************")
-
-        print("Dynamic page Verificatio with Arcadia")
-        #host_info=az_get_vm_info(VM2)
-        #host = get_ip(host_info)
-        ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
-        with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
-        print(exec_shell_cmd(ssh_id,command_lst,log_file))
-        time.sleep(10)
-        print(exec_shell_cmd(ssh_id,command_lst2,log_file))
-        print("Verify the Dynamic page with nginx app protect")
+        exec_shell_cmd(ssh_id,command_lst2,log_file)
         if vfy_nginx(vmss_ip_lst[0],chk_str):
-            print("************* Nginx App Protect dynamic page verification with Arcadia Application is Passed!!! **************")
-            print("Nap-functionality test with invalid attacks")
-            print("======================      cross script      ========================")
-            output = attackslib.cross_script_attack(host[0])
-            print(output)
+            logging.info("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
+            logging.info("NAP  Functionality Test with Invalid Attacks")
+            logging.info("======================      cross script      ========================")
+            output = attackslib.cross_script_attack(vmss_ip_lst[0])
+            logging.info(output)
             assert "support ID" in output
-            print("===================      cross script attack blocked. ================")
-            print("======================      sql injection       ========================")
-            output = attackslib.sql_injection_attack(host[0])
-            print(output)
+            logging.info("===================      cross script attack blocked. ================")
+            logging.info("======================      sql injection       ========================")
+            output = attackslib.sql_injection_attack(vmss_ip_lst[0])
+            logging.info(output)
             assert "support ID" in output
-            print("==================   sql injection script attack blocked.  ==================")
-            print("======================      command injection       ========================")
-            output = attackslib.command_injection_attack(host[0])
-            print(output)
+            logging.info("==================   sql injection script attack blocked.  ==================")
+            logging.info("======================      command injection       ========================")
+            output = attackslib.command_injection_attack(vmss_ip_lst[0])
+            logging.info(output)
             assert "support ID" in output
-            print("================      command injection attack blocked. =================")
-            print("======================      directory traversal      ========================")
-            output = attackslib.directory_traversal_attack(host[0])
-            print(output)
+            logging.info("================      command injection attack blocked. =================")
+            logging.info("======================      directory traversal      ========================")
+            output = attackslib.directory_traversal_attack(vmss_ip_lst[0])
+            logging.info(output)
             assert "support ID" in output
-            print("=================    directory traversal attack blocked.    ===============")
-            print("======================      file inclusion      ========================")
-            output = attackslib.file_inclusion_attack(host[0])
-            print(output)
+            logging.info("=================    directory traversal attack blocked.    ===============")
+            logging.info("======================      file inclusion      ========================")
+            output = attackslib.file_inclusion_attack(vmss_ip_lst[0])
+            logging.info(output)
             assert "support ID" in output
-            print("=======================   file inclusion attack blocked.   ======================")
+            logging.info("=======================   file inclusion attack blocked.   ======================")
         else:
-            print("************* ERROR: Nginx App Protect dynamic page verification is Failed!!! **************")
-        ssh_id.close()
-        
+            logging.info("ERROR: Nginx App Protect dynamic page verification is Failed!!! ")
+        ssh_id.close()        
 
         #Load balancer Test
-        print("Load balancer TEST with fault tolarance")
-        if vfy_nginx(lb_ip,chk_def):
-            print("************Load balancer test with default config is passed!!!***************")
+        logging.info("Load Balancer TEST with Fault Tolarance")
+        az_get_cmd_op(restart_vm)
+        if vfy_nginx(vmss_ip_lst[0],chk_def):
+            logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
-            print("************ ERROR: Load balancer test with default config is Failed!!!***************")
-        print("\t\t\t\t************Fault Tolarance TEST !!!!******************")
-        az_get_cmd_op(stop_vm1)
-        if  vfy_nginx(lb_ip,chk_str):
-            print("********** Load balancer test passed in fault tolarance Test!!! ***********")
-        else:
-            print("********** ERROR: Load balancer test Failed in fault tolarance Test!!! ***********")
-        az_get_cmd_op(start_vm1)
+            logging.info("Load Balancer TEST with Fault Tolarance is Failed!!!")
 
         #Auto-scale Test
-        print("\t************AutoScale TEST !!!!******************")
-        inst_info=az_get_cmd_op(get_vmss)
-        ip=get_ip(inst_info)
-        port_list=get_port_lst(inst_info)
-        #print("Current number of Instances:",port_list)
-        print("Login to the instances and impose HIGH TRAFFIC using stress module")
-        for port in port_list:
-            print("Connecting to ",ip[0],":",port)
-            ssh_id=ssh_connect(ip[0],port,username,vm_password)
+        logging.info("Nginx App Protect WAF - AutoScale TEST ")
+        logging.info("Imposing HIGH TRAFFIC using stress module")
+        for port in vmss_port_list:
+            logging.info("Connecting to ",vmss_ip_lst[0],":",port)
+            ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             ssh_id_lst.append(ssh_id)
-            print(exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10))
+            exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10)
         for ssh_id in ssh_id_lst:
             ssh_id.close()
-        print("Wait for 420 seconds [7 minutes] and verify that autoscaling has takes places")
+        logging.info("Minimum of 5min duration is required to trigger the scaling action - WaitTime: 7Minutes")
         time.sleep(500)
         inst_info= az_get_cmd_op(get_vmss)   
-        print("Number of Instances after imposing high traffic\n\n\n\n",inst_info) 
-        if len(get_port_lst(inst_info)) >= 2:
-            print("AutoScale functionality is tested for nginx image")
+        vmss_ip_lst=get_ip(inst_info)
+        logging.info("Number of Instances after Imposing high traffic",vmss_ip_lst) 
+        if len(get_port_lst(inst_info)) > 2:
+            logging.info("Scaling Test is Completed Sucessfully")
         else:
-            print("Error: AutoScale functionality is failed!!!")
-        '''
+            logging.info("Error: Scaling Test is Failed!!!")
+            
     if DECONFIG:
         #De-config    
         #time.sleep(60)     
