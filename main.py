@@ -87,13 +87,14 @@ if az_id:
         logging.info("Load Balancer TEST with Fault Tolarance")
         instance_state(0,"stop",vmssName,resource_group)
         time.sleep(10)
-        '''
+        
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             logging.info("Load Balancer TEST with Fault Tolarance is Failed!!!")
         instance_state(0,"restart",vmssName,resource_group)
-        time.sleep(10)
+        vmss_port_list.reverse()
+        '''
         #Auto-scale Test
         logging.info("Nginx App Protect WAF - AutoScale TEST ")
         logging.info("Imposing HIGH TRAFFIC using stress module")
@@ -101,11 +102,10 @@ if az_id:
             print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             ssh_id_lst.append(ssh_id)
-            exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10)
-        for ssh_id in ssh_id_lst:
-            ssh_id.close()
+            exec_shell_cmd(ssh_id,apply_stress,log_file)
+        
         logging.info("Minimum of 5min duration is required to trigger the scaling action - WaitTime: 7Minutes")
-        time.sleep(500)
+        time.sleep(200)
         inst_info= az_get_cmd_op(get_vmss)   
         vmss_ip_lst=get_ip(inst_info)
         print("Number of Instances after Imposing high traffic",vmss_ip_lst) 
@@ -113,6 +113,9 @@ if az_id:
             logging.info("Scaling Test is Completed Sucessfully")
         else:
             logging.info("Error: Scaling Test is Failed!!!")
+        for sshId in ssh_id_lst:
+            exec_shell_cmd(sshId,remove_stress,log_file)
+            sshId.close()
         
     if DECONFIG:
         #De-config    
