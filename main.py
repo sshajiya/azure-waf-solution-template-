@@ -92,7 +92,8 @@ if az_id:
             logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             logging.info("Load Balancer TEST with Fault Tolarance is Failed!!!")
-        
+        instance_state(0,"restart",vmssName,resource_group)
+        time.sleep(10)
         #Auto-scale Test
         logging.info("Nginx App Protect WAF - AutoScale TEST ")
         logging.info("Imposing HIGH TRAFFIC using stress module")
@@ -112,7 +113,7 @@ if az_id:
             logging.info("Scaling Test is Completed Sucessfully")
         else:
             logging.info("Error: Scaling Test is Failed!!!")
-        '''   
+        
     if DECONFIG:
         #De-config    
         #time.sleep(60)     
