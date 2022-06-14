@@ -30,7 +30,7 @@ if az_id:
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)        
-        logging.info(str(vmss_ip_lst),str(vmss_port_list))
+        #logging.info(str(vmss_ip_lst),str(vmss_port_list))
         #logging.info(vmss_ip_lst,vmss_port_list)
         
         #NAP Functional Test
@@ -44,36 +44,39 @@ if az_id:
         exec_shell_cmd(ssh_id,command_lst,log_file)
         time.sleep(10)
         exec_shell_cmd(ssh_id,command_lst2,log_file)
-        if vfy_nginx(vmss_ip_lst[0],chk_str):
-            logging.info("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
-            logging.info("NAP  Functionality Test with Invalid Attacks")
-            logging.info("======================      cross script      ========================")
-            output = attackslib.cross_script_attack(vmss_ip_lst[0])
-            logging.info(output)
-            assert "support ID" in output
-            logging.info("===================      cross script attack blocked. ================")
-            logging.info("======================      sql injection       ========================")
-            output = attackslib.sql_injection_attack(vmss_ip_lst[0])
-            logging.info(output)
-            assert "support ID" in output
-            logging.info("==================   sql injection script attack blocked.  ==================")
-            logging.info("======================      command injection       ========================")
-            output = attackslib.command_injection_attack(vmss_ip_lst[0])
-            logging.info(output)
-            assert "support ID" in output
-            logging.info("================      command injection attack blocked. =================")
-            logging.info("======================      directory traversal      ========================")
-            output = attackslib.directory_traversal_attack(vmss_ip_lst[0])
-            logging.info(output)
-            assert "support ID" in output
-            logging.info("=================    directory traversal attack blocked.    ===============")
-            logging.info("======================      file inclusion      ========================")
-            output = attackslib.file_inclusion_attack(vmss_ip_lst[0])
-            logging.info(output)
-            assert "support ID" in output
-            logging.info("=======================   file inclusion attack blocked.   ======================")
-        else:
-            logging.info("ERROR: Nginx App Protect dynamic page verification is Failed!!! ")
+        try:
+            if vfy_nginx(vmss_ip_lst[0],chk_str):
+                logging.info("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
+                logging.info("NAP  Functionality Test with Invalid Attacks")
+                logging.info("======================      cross script      ========================")
+                output = attackslib.cross_script_attack(vmss_ip_lst[0])
+                logging.info(output)
+                assert "support ID" in output
+                logging.info("===================      cross script attack blocked. ================")
+                logging.info("======================      sql injection       ========================")
+                output = attackslib.sql_injection_attack(vmss_ip_lst[0])
+                logging.info(output)
+                assert "support ID" in output
+                logging.info("==================   sql injection script attack blocked.  ==================")
+                logging.info("======================      command injection       ========================")
+                output = attackslib.command_injection_attack(vmss_ip_lst[0])
+                logging.info(output)
+                assert "support ID" in output
+                logging.info("================      command injection attack blocked. =================")
+                logging.info("======================      directory traversal      ========================")
+                output = attackslib.directory_traversal_attack(vmss_ip_lst[0])
+                logging.info(output)
+                assert "support ID" in output
+                logging.info("=================    directory traversal attack blocked.    ===============")
+                logging.info("======================      file inclusion      ========================")
+                output = attackslib.file_inclusion_attack(vmss_ip_lst[0])
+                logging.info(output)
+                assert "support ID" in output
+                logging.info("=======================   file inclusion attack blocked.   ======================")
+            else:
+                logging.info("ERROR: Nginx App Protect dynamic page verification is Failed!!! ")
+        except BaseException:
+            logging.exception("An exception was thrown!")
         ssh_id.close()        
 
         #Load balancer Test
@@ -88,7 +91,7 @@ if az_id:
         logging.info("Nginx App Protect WAF - AutoScale TEST ")
         logging.info("Imposing HIGH TRAFFIC using stress module")
         for port in vmss_port_list:
-            logging.info("Connecting to ",vmss_ip_lst[0],":",port)
+            print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             ssh_id_lst.append(ssh_id)
             exec_shell_cmd(ssh_id,vmss_cmd_lst,log_file,tout=10)
@@ -98,7 +101,7 @@ if az_id:
         time.sleep(500)
         inst_info= az_get_cmd_op(get_vmss)   
         vmss_ip_lst=get_ip(inst_info)
-        logging.info("Number of Instances after Imposing high traffic",vmss_ip_lst) 
+        print("Number of Instances after Imposing high traffic",vmss_ip_lst) 
         if len(get_port_lst(inst_info)) > 2:
             logging.info("Scaling Test is Completed Sucessfully")
         else:
