@@ -25,6 +25,17 @@ if az_id:
         print(port_list)
         
     if TEST:
+        ssh_id=ssh_connect("20.115.105.144",50000,username,vm_password)
+        with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
+        exec_shell_cmd(ssh_id,command_lst,log_file)
+        time.sleep(10)
+        print(exec_shell_cmd(ssh_id,command_lst2,log_file))
+        if vfy_nginx("20.115.105.144",chk_str):
+            print("Dynamic Done")
+        else:
+            print("Error")
+        
+        '''
         #Testing
         print("Test the nginx functionality with high traffic , load balancer test,auto-scale test, dashboard ")
         print("Rules creation")
