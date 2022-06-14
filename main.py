@@ -30,6 +30,7 @@ if az_id:
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)  
+        '''
         instance_state(1,"stop",vmssName,resource_group)
         #logging.info(str(vmss_ip_lst),str(vmss_port_list))
         #logging.info(vmss_ip_lst,vmss_port_list)
@@ -85,11 +86,13 @@ if az_id:
         instance_state(1,"restart",vmssName,resource_group)
         logging.info("Load Balancer TEST with Fault Tolarance")
         instance_state(0,"stop",vmssName,resource_group)
+        time.sleep(10)
+        '''
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             logging.info("Load Balancer TEST with Fault Tolarance is Failed!!!")
-        '''
+        
         #Auto-scale Test
         logging.info("Nginx App Protect WAF - AutoScale TEST ")
         logging.info("Imposing HIGH TRAFFIC using stress module")
