@@ -33,7 +33,9 @@ if az_id:
         inst_info=az_get_cmd_op(get_vmss)
         print(inst_info)
         vmss_ip_lst=get_ip(inst_info)
+        print(vmss_ip_lst)
         vmss_port_list=get_port_lst(inst_info)
+        print(vmss_port_list)
         print("Get the Load Balancer IP")
         lb_ip=az_get_cmd_op(get_lb_pubIP)
         
