@@ -202,6 +202,7 @@ def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
         for cmd in command_lst:
             stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=tout)
             lines = stdout.readlines()
+            print(lines)
         return True
     except BaseException:
         logging.exception("An exception was thrown!")
