@@ -5,6 +5,7 @@ import requests,urllib,re
 from bs4 import BeautifulSoup
 import json
 from var import azure_user_json
+import logging
 
 
 #Methods
@@ -207,7 +208,8 @@ def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
             print("Output: " ,output)
             print("OutputErr: " ,output_err)
         return True
-    except:
+    except BaseException:
+        logging.exception("An exception was thrown!")
         return False
 
 
