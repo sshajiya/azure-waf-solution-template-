@@ -18,17 +18,20 @@ if az_id:
     if CONFIG:
         """If login success, then deploy resources."""
         logging.info("AZ Login Sucessfull!!")
-        logging.info(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
-        logging.info(az_get_cmd_op(http_rule))
-        logging.info(az_get_cmd_op(ssh_rule))
+        deploy=az_arm_deploy(resource_group,autoscale_template,autoscale_param)
+        rule1=az_get_cmd_op(http_rule)
+        rule2=az_get_cmd_op(ssh_rule)                      
+        logging.info(str(deploy))              
+        logging.info(str(rule1))
+        logging.info(str(rule2))
         
     if TEST:
         #Get the instance details from Virtual machine scaleset
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)        
-        logging.info(vmss_ip_lst,vmss_port_list)
-        logging.info(vmss_ip_lst,vmss_port_list)
+        logging.info(str(vmss_ip_lst),str(vmss_port_list))
+        #logging.info(vmss_ip_lst,vmss_port_list)
         
         #NAP Functional Test
         logging.info("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
