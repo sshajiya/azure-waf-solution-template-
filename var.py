@@ -31,6 +31,7 @@ command_lst2 = ["systemctl status nginx"]
 log_file= "vm_log.txt"
 apply_stress= ["for i in $(seq $(getconf _NPROCESSORS_ONLN)); do yes > /dev/null & done"]
 remove_stress=["killall yes"]
+ssh_id_lst=[]
 db_name= "Dashboard-NAP-Test"
 db_nap="az portal dashboard show --name " + db_name + " --resource-group " + resource_group
 del_vmss= "az vmss delete  --name " + vmssName + " --resource-group " + resource_group + " --force-deletion --no-wait"
