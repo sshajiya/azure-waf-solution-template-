@@ -29,7 +29,8 @@ if az_id:
         #Get the instance details from Virtual machine scaleset
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
-        vmss_port_list=get_port_lst(inst_info)        
+        vmss_port_list=get_port_lst(inst_info)  
+        instance_state(1,"stop",vmss_name,resource_group)
         #logging.info(str(vmss_ip_lst),str(vmss_port_list))
         #logging.info(vmss_ip_lst,vmss_port_list)
         
@@ -50,43 +51,45 @@ if az_id:
                 logging.info("NAP  Functionality Test with Invalid Attacks")
                 logging.info("======================      cross script      ========================")
                 output = attackslib.cross_script_attack(vmss_ip_lst[0])
-                logging.info(output)
+                logging.info(str(output))
                 assert "support ID" in output
                 logging.info("===================      cross script attack blocked. ================")
                 logging.info("======================      sql injection       ========================")
                 output = attackslib.sql_injection_attack(vmss_ip_lst[0])
-                logging.info(output)
+                logging.info(str(output))
                 assert "support ID" in output
                 logging.info("==================   sql injection script attack blocked.  ==================")
                 logging.info("======================      command injection       ========================")
                 output = attackslib.command_injection_attack(vmss_ip_lst[0])
-                logging.info(output)
+                logging.info(str(output))
                 assert "support ID" in output
                 logging.info("================      command injection attack blocked. =================")
                 logging.info("======================      directory traversal      ========================")
                 output = attackslib.directory_traversal_attack(vmss_ip_lst[0])
-                logging.info(output)
+                logging.info(str(output))
                 assert "support ID" in output
                 logging.info("=================    directory traversal attack blocked.    ===============")
                 logging.info("======================      file inclusion      ========================")
                 output = attackslib.file_inclusion_attack(vmss_ip_lst[0])
-                logging.info(output)
+                logging.info(str(output))
                 assert "support ID" in output
                 logging.info("=======================   file inclusion attack blocked.   ======================")
             else:
                 logging.info("ERROR: Nginx App Protect dynamic page verification is Failed!!! ")
         except BaseException:
             logging.exception("An exception was thrown!")
-        ssh_id.close()        
+        ssh_id.close()   
+        
 
         #Load balancer Test
+        instance_state(1,"restart",vmss_name,resource_group)
         logging.info("Load Balancer TEST with Fault Tolarance")
-        az_get_cmd_op(restart_vm)
+        instance_state(0,"stop",vmss_name,resource_group)
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             logging.info("Load Balancer TEST with Fault Tolarance is Failed!!!")
-
+        '''
         #Auto-scale Test
         logging.info("Nginx App Protect WAF - AutoScale TEST ")
         logging.info("Imposing HIGH TRAFFIC using stress module")
@@ -106,7 +109,7 @@ if az_id:
             logging.info("Scaling Test is Completed Sucessfully")
         else:
             logging.info("Error: Scaling Test is Failed!!!")
-            
+        '''   
     if DECONFIG:
         #De-config    
         #time.sleep(60)     
