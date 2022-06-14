@@ -42,6 +42,7 @@ azure_user_json= "azure_user_params.json"
 template_db="dashboard.json"
 template_dbparam="dashboard-params.json"
 #########
+vnet_name= "user-shshaik-vnet2"
 vmssName= "azure-cft"
 vmss_lb= "azure-cft-lb"
 get_lb_pubIP="az network public-ip show --resource-group " + resource_group + " --name " + vmss_lb + " --query [ipAddress] --output tsv"
