@@ -4,6 +4,7 @@ from var import *
 import attackslib
 import json
 
+
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
@@ -25,15 +26,19 @@ if az_id:
         print(port_list)
         
     if TEST:
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: Module %(module)s :: Line No %(lineno)s :: %(message)s')
+
         ssh_id=ssh_connect("20.115.105.144",50000,username,vm_password)
         with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
         exec_shell_cmd(ssh_id,command_lst,log_file)
         time.sleep(10)
         print(exec_shell_cmd(ssh_id,command_lst2,log_file))
         if vfy_nginx("20.115.105.144",chk_str):
-            print("Dynamic Done")
+            print("NGINX Static Page Verification is Completed")
+            logging.info("NGINX Static Page Verification is Completed!")
         else:
             print("Error")
+            logging.info("NGINX Static Page Verification is Failed!")
         
         '''
         #Testing
