@@ -14,6 +14,7 @@ jobs:
           #python -m pip install azure-cli==2.32.0
           python -m pip install beautifulsoup4
           python -m pip install paramiko
+          python -m pip install scp
           #az --version
       - name: Execution
         run: |
