@@ -84,7 +84,7 @@ if az_id:
         #Load balancer Test
         instance_state(1,"restart",vmssName,resource_group)
         logging.info("Load Balancer TEST with Fault Tolarance")
-        instance_state(0,"stop",vmss_name,resource_group)
+        instance_state(0,"stop",vmssName,resource_group)
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             logging.info("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
