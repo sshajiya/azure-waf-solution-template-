@@ -15,6 +15,7 @@ jobs:
           python -m pip install beautifulsoup4
           python -m pip install paramiko
           python -m pip install scp
+          python -m pip install requests
           #az --version
       - name: Execution
         run: |
