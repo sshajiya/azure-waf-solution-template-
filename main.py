@@ -97,7 +97,7 @@ if az_id:
         else:
             print("************* ERROR: Nginx App Protect dynamic page verification is Failed!!! **************")
         ssh_id.close()
-        '''
+        
 
         #Load balancer Test
         print("Load balancer TEST with fault tolarance")
