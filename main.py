@@ -32,30 +32,28 @@ if az_id:
         print(az_get_cmd_op(ssh_rule))
         inst_info=az_get_cmd_op(get_vmss)
         print(inst_info)
-        ip=get_ip(inst_info)
-        print(ip)
-        port_list=get_port_lst(inst_info)
-        print(port_list)
+        vmss_ip_lst=get_ip(inst_info)
+        vmss_port_list=get_port_lst(inst_info)
+        print("Get the Load Balancer IP")
         lb_ip=az_get_cmd_op(get_lb_pubIP)
-        lb_ip=ip[0]
         
         print("Load balancer public ip:",lb_ip)
         print("Access the VM through Loadbalancer")
-        if vfy_nginx(lb_ip,chk_def):
+        if vfy_nginx(vmss_ip_lst[0],chk_def):
             print("************Able to access the VM through Load balancer Sucessfully!!!*******************")
         else:
             print("************ ERROR: Unable to access the VM through Load balancer*******************")
-        '''
-        print("Install web application - Arcadia in VM2")
-        host_info=az_get_vm_info(VM2)
-        host = get_ip(host_info)
-        ssh_id=ssh_connect(host[0],port,username,vm_password)
+
+        print("Dynamic page Verificatio with Arcadia")
+        #host_info=az_get_vm_info(VM2)
+        #host = get_ip(host_info)
+        ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
         with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
         print(exec_shell_cmd(ssh_id,command_lst,log_file))
         time.sleep(10)
         print(exec_shell_cmd(ssh_id,command_lst2,log_file))
         print("Verify the Dynamic page with nginx app protect")
-        if vfy_nginx(host[0],chk_str):
+        if vfy_nginx(vmss_ip_lst[0],chk_str):
             print("************* Nginx App Protect dynamic page verification with Arcadia Application is Passed!!! **************")
             print("Nap-functionality test with invalid attacks")
             print("======================      cross script      ========================")
@@ -86,6 +84,7 @@ if az_id:
         else:
             print("************* ERROR: Nginx App Protect dynamic page verification is Failed!!! **************")
         ssh_id.close()
+        '''
 
         #Load balancer Test
         print("Load balancer TEST with fault tolarance")
