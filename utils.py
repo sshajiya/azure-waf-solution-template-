@@ -208,6 +208,15 @@ def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
         logging.exception("An exception was thrown!")
         return False
 
+def instance_state(inst_num,action,vmssName,resource_grp):
+    try:
+        vm_action= "az vmss " + str(action) + " --instance-ids " + str(inst_num) + " --name "  + vmssName + " --resource-group " + resource_grp + "  --no-wait"
+        get_action = subprocess.run(vm_action, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
+        print(get_action)
+        return True
+    except BaseException:
+        logging.exception("An exception was thrown!")
+        return False
 
 def vfy_nginx(url,cond_chk):
     try:
