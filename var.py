@@ -9,8 +9,8 @@ vm_password = azure_user_data["adminPassword"]
 
 #flag declaration
 CONFIG=False
-TEST=True
-DECONFIG=False
+TEST=False
+DECONFIG=True
 
 #Variable Declaration
 vm_name= "Nginx" 
@@ -75,5 +75,8 @@ del_vmss_lb= "az network lb delete --name " + vmssName + vmss_lb + "  --resource
 del_dashboard="az portal dashboard delete --name " + db_name + "  --resource-group " + resource_group + " -y "
 del_vmss_ip= " az network public-ip delete -g " + resource_group + " -n " + "azure-cft-ip"
 del_vmss_lb_ip=" az network public-ip delete -g " + resource_group + " -n " + "autoscale-DemoLBPublicIP"
-del_pub_ip="az network public-ip delete -g " + resource_group + " -n " + "DemoIP"
-del_cfg=[del_vmss,del_vmss_lb,del_dashboard,del_vmss_ip,del_vmss_lb_ip,del_pub_ip]
+del_pub_ip="az network public-ip delete -g " + resource_group + " -n " + "azure-cft-ip"
+del_ssh= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n sshRule"
+del_http= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n httpRule"
+
+del_cfg=[del_vmss,del_ssh,del_http,del_vmss_lb,del_pub_ip]
