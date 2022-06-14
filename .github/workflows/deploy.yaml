@@ -1,6 +1,6 @@
 name: Cloud Formation Template Deployment in Azure
 on:
-  #push: {branches: master}
+  push: {branches: master}
   pull_request: {branches: master} 
   
 jobs:
@@ -13,10 +13,18 @@ jobs:
         run: |
           python -m pip install beautifulsoup4
           python -m pip install paramiko
-          #python -m pip install scp
-          #python -m pip install requests
           python -m pip install azure-cli==2.32.0
           az --version
-      - name: Execution
+      - name: Deploy Azure CFT
         run: |
-          python main.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+          echo "Deploying the Infra into Azure Cloud Env"
+          #python deploy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+      - name: TEST Nginx App Protect WAF with Azure CFT
+        run: |
+          echo "Testing the NAP WAF"
+          python test.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+      - name: Destroy Azure CFT
+        run: |
+          echo "Destroying the Infra into Azure Cloud Env"
+          #python destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+      
