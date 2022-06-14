@@ -132,7 +132,7 @@ def az_get_vm_info(vm_name):
 def az_get_cmd_op(cmd):
     try:
         deploy = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        #print(cmd)
+        print(cmd)
         az_vm_out =  deploy.stdout.decode("utf-8")
         az_vm_err =  deploy.stderr.decode("utf-8")
         return az_vm_out
