@@ -17,7 +17,7 @@ jobs:
           az --version
       - name: Deploy Azure CFT
         run: |
-          echo "Deploying the Infra into Azure Cloud Env"
+          echo "Deploying the Infra into Azure Cloud Env "
           #python deploy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
       - name: TEST Nginx App Protect WAF with Azure CFT
         run: |
