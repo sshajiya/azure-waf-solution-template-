@@ -18,7 +18,7 @@ if az_id:
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)  
         print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)
-        instance_state(1,"stop",vmssName,resource_group)
+        instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
         
         #NAP Functional Test
         print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
