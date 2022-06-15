@@ -92,9 +92,10 @@ if az_id:
             try:
                 #Auto-scale Test
                 print("Nginx App Protect WAF - AutoScale TEST ")
-                print("Current No of instances under VMSS:",vmssName,vmss_ip_lst)
+                print("Current No of instances under VMSS:",vmssName,vmss_ip_lst,vmss_port_list)
                 print("Imposing HIGH TRAFFIC on available instances")
-                for port in vmss_port_list.reverse():
+                vmss_port_list.reverse()
+                for port in vmss_port_list:
                     print("Connecting to ",vmss_ip_lst[0],":",port)
                     ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
                     exec_shell_cmd(ssh_id,apply_stress)
