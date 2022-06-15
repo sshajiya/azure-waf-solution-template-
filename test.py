@@ -2,6 +2,7 @@ import time, os, sys, json
 from utils import *
 from var import *
 import attackslib
+import logging
 
 
 
@@ -28,9 +29,9 @@ if az_id:
             print("ERROR:  NGINX Static Page Verification is Failed!!!")
         ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
         with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
-        exec_shell_cmd(ssh_id,command_lst,log_file)
-        time.sleep(10)
-        exec_shell_cmd(ssh_id,command_lst2,log_file)
+        for cmd in [command_lst,command_lst2]:
+            exec_shell_cmd(ssh_id,cmd)
+            time.sleep(10)
         ssh_id.close() 
         try:
             if vfy_nginx(vmss_ip_lst[0],chk_str):
@@ -38,7 +39,7 @@ if az_id:
                 print("NAP  Functionality Test with Invalid Attacks")
                 print("======================      cross script      ========================")
                 output = attackslib.cross_script_attack(vmss_ip_lst[0])
-                print(output)
+                print("|\t",output)
                 assert "support ID" in output
                 print("===================      cross script attack blocked. ================")
                 print("======================      sql injection       ========================")
@@ -87,7 +88,8 @@ if az_id:
             print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             ssh_id_lst.append(ssh_id)
-            exec_shell_cmd(ssh_id,apply_stress,log_file)
+            exec_shell_cmd(ssh_id,apply_stress)
+            ssh_id.close()
         
         print("Minimum of amount of duration to trigger the auto-scaling action: 6-7 Minutes")
         time.sleep(500)
@@ -98,9 +100,11 @@ if az_id:
             print("Scaling Test is Completed Sucessfully")
         else:
             print("Error: Scaling Test is Failed!!!")
-        for sshId in ssh_id_lst:
-            exec_shell_cmd(sshId,remove_stress,log_file)
-            sshId.close()  
+        for port in vmss_port_list:
+            print("Connecting to ",vmss_ip_lst[0],":",port)
+            ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
+            exec_shell_cmd(ssh_id,remove_stress)
+            ssh_id.close()
     except BaseException:
         logging.exception("An exception was thrown under Test!")
 else:
