@@ -1,10 +1,6 @@
-import time, os, sys, json
+import time, os, sys, json, attackslib
 from utils import *
 from var import *
-import attackslib
-import logging
-
-
 
 #Get the service principal and secret values
 principal= sys.argv[1]
@@ -69,17 +65,18 @@ if az_id:
             raise
           
         #Load balancer Test
-        turn_instance_state(1,"restart",vmssName,resource_group)
+        turn_instance_state(str(vmss_port_list[1])[-1],"restart",vmssName,resource_group)
         print("Load Balancer TEST with Fault Tolarance")
-        turn_instance_state(0,"stop",vmssName,resource_group)
+        turn_instance_state(str(vmss_port_list[1])[-2],"stop",vmssName,resource_group)
         time.sleep(10)
         
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             print("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             print("Load Balancer TEST with Fault Tolarance is Failed!!!")
-        turn_instance_state(0,"restart",vmssName,resource_group)
+        turn_instance_state(str(vmss_port_list[1])[-2],"restart",vmssName,resource_group)
         vmss_port_list.reverse()
+        time.sleep(10)
         
         #Auto-scale Test
         print("Nginx App Protect WAF - AutoScale TEST ")
@@ -105,7 +102,9 @@ if az_id:
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             exec_shell_cmd(ssh_id,remove_stress)
             ssh_id.close()
-    except BaseException:
-        logging.exception("An exception was thrown under Test!")
+    except SSHException as sshException:
+        print("Unable to establish SSH connection: %s" % sshException)
+    #except BaseException:
+    #    logging.exception("An exception was thrown under Test!")
 else:
     print("Error: Unable to connect to Azure CLI")
