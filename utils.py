@@ -71,7 +71,7 @@ def exec_shell_cmd(ssh_id,command_lst):
         logging.exception("An exception was thrown!")
         return False
 
-def instance_state(inst_num,action,vmssName,resource_grp):
+def turn_instance_state(inst_num,action,vmssName,resource_grp):
     try:
         vm_action= "az vmss " + str(action) + " --instance-ids " + str(inst_num) + " --name "  + vmssName + " --resource-group " + resource_grp + "  --no-wait"
         get_action = subprocess.run(vm_action, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
@@ -113,44 +113,4 @@ def get_port_lst(info):
             if port:
                 return port
     except:
-        return False    
-
-def az_create_metric_alert(resource_group,vm_name,alert_name):
-    try:
-        az_scope="az vm show --resource-group "+ resource_group + " --name " + vm_name + " --output tsv --query id"
-        az_condition="az monitor metrics alert condition create --aggregation Average --metric " + '"Percentage CPU"'  + " --op GreaterThan --type static --threshold 90 --output tsv"
-        scope=subprocess.run(az_scope, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        create_cond= subprocess.run(az_condition, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        scope_op = scope.stdout.decode("utf-8").strip()
-        cond_op= create_cond.stdout.decode("utf-8").strip()
-        az_alert= "az monitor metrics alert create --name " + alert_name + " --resource-group " + resource_group + " --scopes " + scope_op.strip() + " --condition \"" + cond_op.strip() + "\" --description " + '"Test High CPU"'
-        alert=subprocess.run(az_alert, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        az_ale_out =  alert.stdout.decode("utf-8")
-        az_ale_err =  alert.stderr.decode("utf-8")
-        print(az_ale_out,"\n\n",az_ale_err)
-        return az_ale_out
-    except:
-        return az_ale_err
-
-
-def az_get_metric_alert(resource_group,alert_name):
-    try:
-        az_alert= "az monitor metrics alert show --name " + alert_name + " --resource-group " + resource_group
-        get_alert=subprocess.run(az_alert, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        az_ale_out =  get_alert.stdout.decode("utf-8")
-        az_ale_err =  get_alert.stderr.decode("utf-8")
-        return az_ale_out
-    except:
-        return az_ale_err
-
-
-def az_delete_metric_alert(resource_group,alert_name):
-    try:
-        az_alert= "az monitor metrics alert delete --name " + alert_name + " --resource-group " + resource_group
-        print(az_alert)
-        get_alert=subprocess.run(az_alert, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        az_ale_out =  get_alert.stdout.decode("utf-8")
-        az_ale_err =  get_alert.stderr.decode("utf-8")
-        return az_ale_out
-    except:
-        return az_ale_err
+        return False
