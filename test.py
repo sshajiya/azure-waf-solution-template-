@@ -28,7 +28,7 @@ if az_id:
         for cmd in [command_lst,command_lst2]:
             exec_shell_cmd(ssh_id,cmd)
             time.sleep(10)
-        ssh_id.close() 
+        #ssh_id.close() 
         try:
             if vfy_nginx(vmss_ip_lst[0],chk_str):
                 print("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
@@ -86,7 +86,7 @@ if az_id:
             print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             exec_shell_cmd(ssh_id,apply_stress)
-            ssh_id.close()
+            #ssh_id.close()
         
         print("Minimum of amount of duration to trigger the auto-scaling action: 6-7 Minutes")
         time.sleep(500)
@@ -101,7 +101,7 @@ if az_id:
             print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
             exec_shell_cmd(ssh_id,remove_stress)
-            ssh_id.close()
+            #ssh_id.close()
     except SSHException as sshException:
         print("Unable to establish SSH connection: %s" % sshException)
     #except BaseException:
