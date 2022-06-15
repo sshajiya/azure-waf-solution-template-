@@ -54,8 +54,8 @@ def ssh_connect(host,port,username,password):
     try:
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_id=ssh.connect(host, port, username, password)
-        return ssh_id;
+        ssh.connect(host, port, username, password)
+        return ssh;
     except BaseException:
         logging.exception("An exception was thrown!")
         return False
