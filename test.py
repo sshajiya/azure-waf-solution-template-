@@ -19,7 +19,7 @@ if az_id:
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)  
         print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)
-        instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
+        turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
         
         #NAP Functional Test
         print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
@@ -68,16 +68,16 @@ if az_id:
             logging.exception("An exception was thrown!")
           
         #Load balancer Test
-        instance_state(1,"restart",vmssName,resource_group)
+        turn_instance_state(1,"restart",vmssName,resource_group)
         print("Load Balancer TEST with Fault Tolarance")
-        instance_state(0,"stop",vmssName,resource_group)
+        turn_instance_state(0,"stop",vmssName,resource_group)
         time.sleep(10)
         
         if vfy_nginx(vmss_ip_lst[0],chk_def):
             print("Load Balancer TEST with Fault Tolarance is Sucessfull")
         else:
             print("Load Balancer TEST with Fault Tolarance is Failed!!!")
-        instance_state(0,"restart",vmssName,resource_group)
+        turn_instance_state(0,"restart",vmssName,resource_group)
         vmss_port_list.reverse()
         
         #Auto-scale Test
