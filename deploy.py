@@ -11,12 +11,11 @@ print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
 if az_id:
     try:
-        if CONFIG:
-            """If login success, then deploy resources."""
-            print("AZ Login Sucessfull!!")
-            print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
-            print(az_get_cmd_op(http_rule))
-            print(az_get_cmd_op(ssh_rule))  
+        """If login success, then deploy resources."""
+        print("AZ Login Sucessfull!!")
+        print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
+        print(az_get_cmd_op(http_rule))
+        print(az_get_cmd_op(ssh_rule))  
     except BaseException:
         logging.exception("An exception was thrown!")
 else:
