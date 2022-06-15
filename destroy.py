@@ -14,6 +14,7 @@ if az_id:
         print("Destroying the Infra.")  
         for service in del_cfg:
             az_get_cmd_op(service) 
+            time.sleep(7)
     except BaseException:
         logging.exception("An exception was thrown under Destroy!")
 else:
