@@ -132,9 +132,9 @@ def az_get_vm_info(vm_name):
 def az_get_cmd_op(cmd):
     try:
         deploy = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        print(cmd)
         az_vm_out =  deploy.stdout.decode("utf-8")
         az_vm_err =  deploy.stderr.decode("utf-8")
+        print(cmd,az_vm_out,az_vm_err)
         return az_vm_out
     except:
         return az_vm_err
@@ -197,10 +197,10 @@ def ssh_connect(host,port,username,password):
         return False
 
         
-def exec_shell_cmd(ssh_id,command_lst,log_file,tout=None):
+def exec_shell_cmd(ssh_id,command_lst):
     try:
         for cmd in command_lst:
-            stdin, stdout, stderr = ssh_id.exec_command(cmd,timeout=tout)
+            stdin, stdout, stderr = ssh_id.exec_command(cmd)
             lines = stdout.readlines()
             for line in lines: print(line)
         return True
