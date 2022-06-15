@@ -11,8 +11,8 @@ vnet_name= azure_user_data["cftVnet"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
-NAP_TEST = True
-LB_TEST = False
+NAP_TEST = False
+LB_TEST = True
 AutoScale_TEST = False
 
 #Variable Declaration
