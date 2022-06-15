@@ -5,6 +5,12 @@ from var import *
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
+verify= sys.argv[3]
+NAP_TEST= verify['napTest']
+LB_TEST= verify['lbTest']
+AutoScale_TEST= verify['autoscaleTest']
+print(NAP_TEST,LB_TEST,AutoScale_TEST)
+'''
 
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
@@ -108,3 +114,4 @@ if az_id:
     #    logging.exception("An exception was thrown under Test!")
 else:
     print("Error: Unable to connect to Azure CLI")
+'''
