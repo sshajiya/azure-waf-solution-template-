@@ -14,7 +14,7 @@ password = sys.argv[2]
 #AutoScale_TEST= verify['autoscaleTest']
 #print(NAP_TEST,LB_TEST,AutoScale_TEST)
 
-'''
+
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
 if az_id:             
@@ -120,4 +120,4 @@ if az_id:
 
 else:
     print("Error: Unable to connect to Azure CLI")
-'''
+
