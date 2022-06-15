@@ -1,5 +1,5 @@
 {"cftName": "azure-cft",
- "cftVnet": "user-shshaik-vnet2"
+ "cftVnet": "user-shshaik-vnet2",
 "adminUsername": "demouser",
 "adminPassword": "Demouser1234",
 "location": "eastus",
