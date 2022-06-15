@@ -22,9 +22,9 @@ jobs:
       - name: TEST Nginx App Protect WAF with Azure CFT
         run: |
           echo "Testing the NAP WAF"
-          python test.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+          #python test.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
       - name: Destroy Azure CFT
         run: |
           echo "Destroying the Infra into Azure Cloud Env"
-          #python destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+          python destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
       
