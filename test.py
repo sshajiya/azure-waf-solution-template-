@@ -64,8 +64,9 @@ if az_id:
                 print("=======================   file inclusion attack blocked.   ======================")
             else:
                 print("ERROR: Nginx App Protect dynamic page verification is Failed!!! ")
-        except BaseException:
-            logging.exception("An exception was thrown!")
+        except AssertionError:
+            print("Encountered a Problem")
+            raise
           
         #Load balancer Test
         turn_instance_state(1,"restart",vmssName,resource_group)
