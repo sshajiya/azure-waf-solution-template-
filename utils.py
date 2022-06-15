@@ -134,7 +134,7 @@ def az_get_cmd_op(cmd):
         deploy = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
         az_vm_out =  deploy.stdout.decode("utf-8")
         az_vm_err =  deploy.stderr.decode("utf-8")
-        print(cmd,az_vm_out,az_vm_err)
+        print(cmd,deploy,az_vm_out,az_vm_err)
         return az_vm_out
     except:
         return az_vm_err
