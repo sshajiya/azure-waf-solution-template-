@@ -13,10 +13,10 @@ jobs:
         run: |
           python -m pip install beautifulsoup4
           python -m pip install paramiko
-          python -m pip install requests
-          python -m pip install scp
-          #python -m pip install azure-cli==2.32.0
-          #az --version
+          #python -m pip install requests
+          #python -m pip install scp
+          python -m pip install azure-cli==2.32.0
+          az --version
       - name: Deploy Azure CFT
         run: |
           echo "Deploying the Infra into Azure Cloud Env "
