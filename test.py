@@ -88,7 +88,6 @@ if az_id:
         for port in vmss_port_list:
             print("Connecting to ",vmss_ip_lst[0],":",port)
             ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
-            ssh_id_lst.append(ssh_id)
             exec_shell_cmd(ssh_id,apply_stress)
             ssh_id.close()
         
