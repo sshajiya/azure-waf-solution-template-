@@ -125,7 +125,7 @@
             "value": "1"
         },
         "autoscaleDiagnosticLogsWorkspaceId": {
-            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.operationalinsights/workspaces/sshaik-lws"
+            "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.operationalinsights/workspaces/sshaik-law"
         },
         "healthExtensionProtocol": {
             "value": "http"
