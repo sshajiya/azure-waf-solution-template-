@@ -93,10 +93,12 @@ def vfy_nginx(url,cond_chk):
             return True
         else:
             return False
-    except BaseException:
-        logging.exception("An exception was thrown!")
+    except urllib.error.HTTPError as e:
+        print(e.__dict__)
         return False
-
+    except urllib.error.URLError as e:
+        print(e.__dict__)
+        return False
 
 def get_ip(info):
     try:
