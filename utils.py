@@ -56,8 +56,8 @@ def ssh_connect(host,port,username,password):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, port, username, password)
         return ssh;
-    except BaseException:
-        logging.exception("An exception was thrown!")
+    except SSHException as sshException:
+        print("Unable to establish SSH connection: %s" % sshException)
         return False
 
 def exec_shell_cmd(ssh_id,command_lst):
@@ -67,8 +67,8 @@ def exec_shell_cmd(ssh_id,command_lst):
             lines = stdout.readlines()
             for line in lines: print(line)
         return True
-    except BaseException:
-        logging.exception("An exception was thrown!")
+    except SSHException as sshException:
+        print("Unable to establish SSH connection: %s" % sshException)
         return False
 
 def turn_instance_state(inst_num,action,vmssName,resource_grp):
