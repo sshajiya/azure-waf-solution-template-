@@ -6,13 +6,13 @@ import ast
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
-print(type(sys.argv[3]))
-verify= ast.literal_eval(sys.argv[3])
-print(type(verify))
-NAP_TEST= verify['napTest']
-LB_TEST= verify['lbTest']
-AutoScale_TEST= verify['autoscaleTest']
-print(NAP_TEST,LB_TEST,AutoScale_TEST)
+#print(type(sys.argv[3]))
+#verify= ast.literal_eval(sys.argv[3])
+#print(type(verify))
+#NAP_TEST= verify['napTest']
+#LB_TEST= verify['lbTest']
+#AutoScale_TEST= verify['autoscaleTest']
+#print(NAP_TEST,LB_TEST,AutoScale_TEST)
 
 '''
 print("Connecting to Azure CLI")
