@@ -1,11 +1,12 @@
 import time, os, sys, json, attackslib
 from utils import *
 from var import *
+import ast
 
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
-verify= sys.argv[3]
+verify= ast.literal_eval(sys.argv[3])
 NAP_TEST= verify['napTest']
 LB_TEST= verify['lbTest']
 AutoScale_TEST= verify['autoscaleTest']
