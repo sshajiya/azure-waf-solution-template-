@@ -69,9 +69,6 @@
     "virtualMachineScaleSetName": {
       "value": "azure-cft"
     },
-    "singlePlacementGroup": {
-      "value": "false"
-    },
     "instanceCount": {
       "value": "2"
     },
@@ -84,15 +81,6 @@
           "Default"
         ]
       }
-    },
-    "instanceTermincationNotificationNotBeforeTimeout": {
-      "value": "PT12M"
-    },
-    "overprovision": {
-      "value": false
-    },
-    "upgradePolicy": {
-      "value": "Manual"
     },
     "adminUsername": {
       "value": "demouser"
@@ -127,24 +115,6 @@
     "autoscaleDiagnosticLogsWorkspaceId": {
       "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.operationalinsights/workspaces/sshaik-law"
     },
-    "healthExtensionProtocol": {
-      "value": "http"
-    },
-    "healthExtensionPort": {
-      "value": 80
-    },
-    "healthExtensionRequestPath": {
-      "value": "/"
-    },
-    "autoRepairsPolicyEnabled": {
-      "value": false
-    },
-    "gracePeriod": {
-      "value": "PT10M"
-    },
-    "platformFaultDomainCount": {
-      "value": "1"
-    },
     "zone": {
       "value": [
         "1",
@@ -152,8 +122,5 @@
         "3"
       ]
     },
-    "zoneBalance": {
-      "value": "false"
-    }
   }
 }
