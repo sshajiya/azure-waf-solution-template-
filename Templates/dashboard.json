@@ -1,1265 +1,1265 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "dashboards_name": {
-            "defaultValue": "Dashboard-NAP-Test2",
-            "type": "String"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Portal/dashboards",
-            "apiVersion": "2020-09-01-preview",
-            "name": "[parameters('dashboards_name')]",
-            "location": "eastus",
-            "tags": {
-                "hidden-title": "[parameters('dashboards_name')]"
-            },
-            "properties": {
-                "lenses": [
-                    {
-                        "order": 0,
-                        "parts": [
-                            {
-                                "position": {
-                                    "x": 0,
-                                    "y": 0,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Percentage CPU"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 3,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Percentage CPU"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "OS Disk Bandwidth Consumed Percentage",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "OS Disk Bandwidth Consumed Percentage"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Data Disk Bandwidth Consumed Percentage",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Data Disk Bandwidth Consumed Percentage"
-											  }
-											}
-										  ],
-										  "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for azure-cft",
-										  "titleKind": 1,
-										  "visualization": {
-											"chartType": 2,
-											"legendVisualization": {
-											  "isVisible": true,
-											  "position": 2,
-											  "hideSubtitle": false
-											},
-											"axisVisualization": {
-											  "x": {
-												"isVisible": true,
-												"axisType": 2
-											  },
-											  "y": {
-												"isVisible": true,
-												"axisType": 1
-											  }
-											}
-										  },
-										  "timespan": {
-											"relative": {
-											  "duration": 86400000
-											},
-											"showUTCTime": false,
-											"grain": 1
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Percentage CPU"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 3,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Percentage CPU"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "OS Disk Bandwidth Consumed Percentage",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "OS Disk Bandwidth Consumed Percentage"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Data Disk Bandwidth Consumed Percentage",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.compute/virtualmachinescalesets",
-											  "metricVisualization": {
-												"displayName": "Data Disk Bandwidth Consumed Percentage"
-											  }
-											}
-										  ],
-										  "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for azure-cft",
-										  "titleKind": 1,
-										  "visualization": {
-											"chartType": 2,
-											"legendVisualization": {
-											  "isVisible": true,
-											  "position": 2,
-											  "hideSubtitle": false
-											},
-											"axisVisualization": {
-											  "x": {
-												"isVisible": true,
-												"axisType": 2
-											  },
-											  "y": {
-												"isVisible": true,
-												"axisType": 1
-											  }
-											},
-											"disablePinning": true
-										  }
-										}
-									  }
-									}
-								  },
-								  "filters": {
-									"MsPortalFx_TimeRange": {
-									  "model": {
-										"format": "local",
-										"granularity": "auto",
-										"relative": "1440m"
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 6,
-                                    "y": 0,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "ComponentId",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "TimeContext",
-									  "value": null,
-									  "isOptional": true
-									},
-									{
-									  "name": "ResourceIds",
-									  "value": [
-										"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-									  ],
-									  "isOptional": true
-									},
-									{
-									  "name": "ConfigurationId",
-									  "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "Type",
-									  "value": "workbook",
-									  "isOptional": true
-									},
-									{
-									  "name": "GalleryResourceType",
-									  "value": "microsoft.network/loadbalancers",
-									  "isOptional": true
-									},
-									{
-									  "name": "PinName",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "StepSettings",
-									  "value": "{\"chartId\":\"workbookd486cfe9-d48c-4718-a98e-14326b2b2eca\",\"version\":\"MetricsItem/2.0\",\"size\":1,\"chartType\":3,\"resourceType\":\"microsoft.compute/virtualmachinescalesets\",\"metricScope\":0,\"resourceParameter\":\"BackendVMSS\",\"resourceIds\":[\"{BackendVMSS}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.compute/virtualmachinescalesets\",\"metric\":\"microsoft.compute/virtualmachinescalesets--Network In Total\",\"aggregation\":1,\"splitBy\":null},{\"namespace\":\"microsoft.compute/virtualmachinescalesets\",\"metric\":\"microsoft.compute/virtualmachinescalesets--Network Out Total\",\"aggregation\":1}],\"title\":\"Backend Pool Metric - VMSS (Network In Out)\",\"gridFormatType\":2,\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"Metric\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":false}},\"subtitleContent\":{\"columnMatch\":\"Aggregation\",\"formatOptions\":{\"showIcon\":true}},\"leftContent\":{\"columnMatch\":\"Value\",\"formatter\":12,\"formatOptions\":{\"palette\":\"auto\",\"showIcon\":true},\"numberFormat\":{\"unit\":17,\"options\":{\"maximumSignificantDigits\":3,\"maximumFractionDigits\":2}}},\"rightContent\":{\"columnMatch\":\"Timeline\",\"formatter\":10,\"formatOptions\":{\"showIcon\":true}},\"secondaryContent\":{\"columnMatch\":\"Name\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":true}},\"showBorder\":false,\"sortCriteriaField\":\"Name\",\"sortOrderField\":2},\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"Subscription\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Name\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":\"Resource\",\"showIcon\":true}},{\"columnMatch\":\"Segment\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network In Total\",\"formatter\":8,\"formatOptions\":{\"palette\":\"orange\",\"linkColumn\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"linkTarget\":\"WorkbookTemplate\",\"linkIsContextBlade\":true,\"showIcon\":true,\"workbookContext\":null},\"numberFormat\":{\"unit\":2,\"options\":{\"style\":\"decimal\",\"useGrouping\":true,\"maximumFractionDigits\":1}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network In Total Timeline\",\"formatter\":8,\"formatOptions\":{\"palette\":\"blue\",\"showIcon\":true,\"aggregation\":\"Average\"},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\",\"maximumFractionDigits\":1}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network Out Total\",\"formatter\":5,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true},\"numberFormat\":{\"unit\":2,\"options\":{\"style\":\"decimal\",\"useGrouping\":false}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network Out Total Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate Timeline\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Metric\",\"formatter\":1,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Aggregation\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Value\",\"formatter\":1,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Timeline\",\"formatter\":9,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Segment Field\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}}],\"rowLimit\":10000,\"labelSettings\":[{\"columnId\":\"microsoft.compute/virtualmachines--Network In Total\",\"label\":\"Network In Total (Sum)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network In Total Timeline\",\"label\":\"Network In Total (Sum) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network Out Total\",\"label\":\"Network Out Total (Sum)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network Out Total Timeline\",\"label\":\"Network Out Total (Sum) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"label\":\"Inbound Flows (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Timeline\",\"label\":\"Inbound Flows (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate\",\"label\":\"Inbound Flows Maximum Creation Rate (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate Timeline\",\"label\":\"Inbound Flows Maximum Creation Rate (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows\",\"label\":\"Outbound Flows (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Timeline\",\"label\":\"Outbound Flows (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate\",\"label\":\"Outbound Flows Maximum Creation Rate (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate Timeline\",\"label\":\"Outbound Flows Maximum Creation Rate (Average) Timeline\"}]}}",
-									  "isOptional": true
-									},
-									{
-									  "name": "ParameterValues",
-									  "value": {
-										"LoadBalancer": {
-										  "type": 5,
-										  "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft-lb",
-										  "displayName": "Load Balancer",
-										  "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-										},
-										"BackenVMs": {
-										  "type": 5,
-										  "value": [],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "All",
-										  "displayName": " Backend VMs",
-										  "specialValue": [
-											"value::all"
-										  ],
-										  "formattedValue": ""
-										},
-										"BackendVMSS": {
-										  "type": 5,
-										  "value": [
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
-										  ],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft, azure-cft (and 1 more)",
-										  "displayName": "Backend VMSS",
-										  "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
-										},
-										"SKU": {
-										  "type": 1,
-										  "value": "Standard",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Standard",
-										  "displayName": "SKU",
-										  "formattedValue": "Standard"
-										},
-										"TimeRange": {
-										  "type": 4,
-										  "value": {
-											"durationMs": 86400000
-										  },
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Last 24 hours",
-										  "displayName": "Time Range",
-										  "formattedValue": "Last 24 hours"
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "Location",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 0,
-                                    "y": 4,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "DipAvailability",
-											  "aggregationType": 2,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Health Probe Status"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "PacketCount",
-											  "aggregationType": 1,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Packet Count"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "VipAvailability",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Data Path Availability"
-											  }
-											}
-										  ],
-										  "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for azure-cft-lb",
-										  "titleKind": 1,
-										  "visualization": {
-											"chartType": 2,
-											"legendVisualization": {
-											  "isVisible": true,
-											  "position": 2,
-											  "hideSubtitle": false
-											},
-											"axisVisualization": {
-											  "x": {
-												"isVisible": true,
-												"axisType": 2
-											  },
-											  "y": {
-												"isVisible": true,
-												"axisType": 1
-											  }
-											}
-										  },
-										  "timespan": {
-											"relative": {
-											  "duration": 86400000
-											},
-											"showUTCTime": false,
-											"grain": 1
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "DipAvailability",
-											  "aggregationType": 2,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Health Probe Status"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "PacketCount",
-											  "aggregationType": 1,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Packet Count"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-											  },
-											  "name": "VipAvailability",
-											  "aggregationType": 4,
-											  "namespace": "microsoft.network/loadbalancers",
-											  "metricVisualization": {
-												"displayName": "Data Path Availability"
-											  }
-											}
-										  ],
-										  "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for azure-cft-lb",
-										  "titleKind": 1,
-										  "visualization": {
-											"chartType": 2,
-											"legendVisualization": {
-											  "isVisible": true,
-											  "position": 2,
-											  "hideSubtitle": false
-											},
-											"axisVisualization": {
-											  "x": {
-												"isVisible": true,
-												"axisType": 2
-											  },
-											  "y": {
-												"isVisible": true,
-												"axisType": 1
-											  }
-											},
-											"disablePinning": true
-										  }
-										}
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 6,
-                                    "y": 4,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "ComponentId",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "TimeContext",
-									  "value": null,
-									  "isOptional": true
-									},
-									{
-									  "name": "ResourceIds",
-									  "value": [
-										"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-									  ],
-									  "isOptional": true
-									},
-									{
-									  "name": "ConfigurationId",
-									  "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "Type",
-									  "value": "workbook",
-									  "isOptional": true
-									},
-									{
-									  "name": "GalleryResourceType",
-									  "value": "microsoft.network/loadbalancers",
-									  "isOptional": true
-									},
-									{
-									  "name": "PinName",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "StepSettings",
-									  "value": "{\"chartId\":\"workbookd134607b-032e-45b7-998c-abcb0ad832ab\",\"version\":\"MetricsItem/2.0\",\"size\":1,\"chartType\":2,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceParameter\":\"LoadBalancer\",\"resourceIds\":[\"{LoadBalancer}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4,\"splitBy\":\"BackendIPAddress\"}],\"title\":\"Health Probe Status by Backend IP Address\",\"gridSettings\":{\"rowLimit\":10000}}",
-									  "isOptional": true
-									},
-									{
-									  "name": "ParameterValues",
-									  "value": {
-										"LoadBalancer": {
-										  "type": 5,
-										  "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft-lb",
-										  "displayName": "Load Balancer",
-										  "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-										},
-										"BackenVMs": {
-										  "type": 5,
-										  "value": [],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "All",
-										  "displayName": " Backend VMs",
-										  "specialValue": [
-											"value::all"
-										  ],
-										  "formattedValue": ""
-										},
-										"BackendVMSS": {
-										  "type": 5,
-										  "value": [
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
-										  ],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft, azure-cft (and 1 more)",
-										  "displayName": "Backend VMSS",
-										  "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
-										},
-										"SKU": {
-										  "type": 1,
-										  "value": "Standard",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Standard",
-										  "displayName": "SKU",
-										  "formattedValue": "Standard"
-										},
-										"TimeRange": {
-										  "type": 4,
-										  "value": {
-											"durationMs": 86400000
-										  },
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Last 24 hours",
-										  "displayName": "Time Range",
-										  "formattedValue": "Last 24 hours"
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "Location",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 0,
-                                    "y": 8,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "ComponentId",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "TimeContext",
-									  "value": null,
-									  "isOptional": true
-									},
-									{
-									  "name": "ResourceIds",
-									  "value": [
-										"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-									  ],
-									  "isOptional": true
-									},
-									{
-									  "name": "ConfigurationId",
-									  "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "Type",
-									  "value": "workbook",
-									  "isOptional": true
-									},
-									{
-									  "name": "GalleryResourceType",
-									  "value": "microsoft.network/loadbalancers",
-									  "isOptional": true
-									},
-									{
-									  "name": "PinName",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "StepSettings",
-									  "value": "{\"chartId\":\"workbookd486cfe9-d48c-4718-a98e-14326b2b2eca\",\"version\":\"MetricsItem/2.0\",\"size\":4,\"chartType\":-1,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceParameter\":\"LoadBalancer\",\"resourceIds\":[\"{LoadBalancer}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--VipAvailability\",\"aggregation\":4},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--SnatConnectionCount\",\"aggregation\":1},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--SYNCount\",\"aggregation\":1}],\"title\":\"Load Balancer Key Metrics\",\"gridFormatType\":1,\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"Metric\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":false}},\"subtitleContent\":{\"columnMatch\":\"Aggregation\",\"formatOptions\":{\"showIcon\":true}},\"leftContent\":{\"columnMatch\":\"Value\",\"formatter\":12,\"formatOptions\":{\"palette\":\"auto\",\"linkColumn\":\"Name\",\"linkTarget\":\"Metrics\",\"showIcon\":true},\"numberFormat\":{\"unit\":17,\"options\":{\"style\":\"decimal\",\"useGrouping\":false,\"maximumFractionDigits\":2,\"maximumSignificantDigits\":3}}},\"rightContent\":{\"columnMatch\":\"Timeline\",\"formatter\":10,\"formatOptions\":{\"showIcon\":true}},\"showBorder\":false},\"gridSettings\":{\"rowLimit\":10000}}",
-									  "isOptional": true
-									},
-									{
-									  "name": "ParameterValues",
-									  "value": {
-										"LoadBalancer": {
-										  "type": 5,
-										  "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft-lb",
-										  "displayName": "Load Balancer",
-										  "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-										},
-										"BackenVMs": {
-										  "type": 5,
-										  "value": [],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "All",
-										  "displayName": " Backend VMs",
-										  "specialValue": [
-											"value::all"
-										  ],
-										  "formattedValue": ""
-										},
-										"BackendVMSS": {
-										  "type": 5,
-										  "value": [
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
-											"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
-										  ],
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "azure-cft, azure-cft (and 1 more)",
-										  "displayName": "Backend VMSS",
-										  "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
-										},
-										"SKU": {
-										  "type": 1,
-										  "value": "Standard",
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Standard",
-										  "displayName": "SKU",
-										  "formattedValue": "Standard"
-										},
-										"TimeRange": {
-										  "type": 4,
-										  "value": {
-											"durationMs": 86400000
-										  },
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Last 24 hours",
-										  "displayName": "Time Range",
-										  "formattedValue": "Last 24 hours"
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "Location",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 6,
-                                    "y": 8,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Network In",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Network Out",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Network (total)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Network In",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Network Out",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Network (total)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2,
-											"disablePinning": true
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  }
-									}
-								  },
-								  "filters": {
-									"MsPortalFx_TimeRange": {
-									  "model": {
-										"format": "local",
-										"granularity": "auto",
-										"relative": "60m"
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 0,
-                                    "y": 12,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "CPU (average)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Percentage CPU",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "CPU (average)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2,
-											"disablePinning": true
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  }
-									}
-								  },
-								  "filters": {
-									"MsPortalFx_TimeRange": {
-									  "model": {
-										"format": "local",
-										"granularity": "auto",
-										"relative": "60m"
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 6,
-                                    "y": 12,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Read Bytes",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Write Bytes",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Disk bytes (total)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Read Bytes",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Write Bytes",
-											  "aggregationType": 1,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Disk bytes (total)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2,
-											"disablePinning": true
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  }
-									}
-								  },
-								  "filters": {
-									"MsPortalFx_TimeRange": {
-									  "model": {
-										"format": "local",
-										"granularity": "auto",
-										"relative": "60m"
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 0,
-                                    "y": 16,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "options",
-									  "value": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Read Operations/Sec",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Write Operations/Sec",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Disk operations/sec (average)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "sharedTimeRange",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-								  "settings": {
-									"content": {
-									  "options": {
-										"chart": {
-										  "metrics": [
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Read Operations/Sec",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											},
-											{
-											  "resourceMetadata": {
-												"id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
-											  },
-											  "name": "Disk Write Operations/Sec",
-											  "aggregationType": 4,
-											  "metricVisualization": {
-												"resourceDisplayName": "azure-cft"
-											  }
-											}
-										  ],
-										  "title": "Disk operations/sec (average)",
-										  "titleKind": 2,
-										  "visualization": {
-											"chartType": 2,
-											"disablePinning": true
-										  },
-										  "openBladeOnClick": {
-											"openBlade": true
-										  }
-										}
-									  }
-									}
-								  },
-								  "filters": {
-									"MsPortalFx_TimeRange": {
-									  "model": {
-										"format": "local",
-										"granularity": "auto",
-										"relative": "60m"
-									  }
-									}
-								  }
-								}
-                            },
-                            {
-                                "position": {
-                                    "x": 6,
-                                    "y": 16,
-                                    "rowSpan": 4,
-                                    "colSpan": 6
-                                },
-                                "metadata": {
-								  "inputs": [
-									{
-									  "name": "ComponentId",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "TimeContext",
-									  "value": null,
-									  "isOptional": true
-									},
-									{
-									  "name": "ResourceIds",
-									  "value": [
-										"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
-									  ],
-									  "isOptional": true
-									},
-									{
-									  "name": "ConfigurationId",
-									  "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "Type",
-									  "value": "workbook",
-									  "isOptional": true
-									},
-									{
-									  "name": "GalleryResourceType",
-									  "value": "microsoft.network/loadbalancers",
-									  "isOptional": true
-									},
-									{
-									  "name": "PinName",
-									  "value": "Network Insights LoadBalancers Minified",
-									  "isOptional": true
-									},
-									{
-									  "name": "StepSettings",
-									  "value": "{\"chartId\":\"workbook9f62d50f-d83c-4d05-9f9d-5e30eadcc3c2\",\"version\":\"MetricsItem/2.0\",\"size\":0,\"chartType\":2,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceIds\":[\"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb\"],\"timeContext\":{\"durationMs\":3600000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4,\"splitBy\":null}],\"gridSettings\":{\"rowLimit\":10000}}",
-									  "isOptional": true
-									},
-									{
-									  "name": "ParameterValues",
-									  "value": {
-										"LoadBalancer": {
-										  "type": 5,
-										  "value": null,
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "<unset>",
-										  "displayName": "Load Balancer",
-										  "formattedValue": null
-										},
-										"BackenVMs": {
-										  "type": 5,
-										  "isPending": false,
-										  "isWaiting": true,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "<query pending>",
-										  "displayName": " Backend VMs",
-										  "formattedValue": ""
-										},
-										"BackendVMSS": {
-										  "type": 5,
-										  "isPending": false,
-										  "isWaiting": true,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "<query pending>",
-										  "displayName": "Backend VMSS",
-										  "formattedValue": ""
-										},
-										"SKU": {
-										  "type": 1,
-										  "isPending": false,
-										  "isWaiting": true,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "<query pending>",
-										  "displayName": "SKU",
-										  "formattedValue": ""
-										},
-										"TimeRange": {
-										  "type": 4,
-										  "value": {
-											"durationMs": 86400000
-										  },
-										  "isPending": false,
-										  "isWaiting": false,
-										  "isFailed": false,
-										  "isGlobal": false,
-										  "labelValue": "Last 24 hours",
-										  "displayName": "Time Range",
-										  "formattedValue": "Last 24 hours"
-										}
-									  },
-									  "isOptional": true
-									},
-									{
-									  "name": "Location",
-									  "isOptional": true
-									}
-								  ],
-								  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
-								}
-                            }
-                        ]
-                    }
-                ],
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dashboards_name": {
+      "defaultValue": "Dashboard-NAP-Test2",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Portal/dashboards",
+      "apiVersion": "2020-09-01-preview",
+      "name": "[parameters('dashboards_name')]",
+      "location": "eastus",
+      "tags": {
+        "hidden-title": "[parameters('dashboards_name')]"
+      },
+      "properties": {
+        "lenses": [
+          {
+            "order": 0,
+            "parts": [
+              {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
                 "metadata": {
-                    "model": {}
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Percentage CPU"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 3,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Percentage CPU"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "OS Disk Bandwidth Consumed Percentage",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "OS Disk Bandwidth Consumed Percentage"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Data Disk Bandwidth Consumed Percentage",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Data Disk Bandwidth Consumed Percentage"
+                              }
+                            }
+                          ],
+                          "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for azure-cft",
+                          "titleKind": 1,
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            }
+                          },
+                          "timespan": {
+                            "relative": {
+                              "duration": 86400000
+                            },
+                            "showUTCTime": false,
+                            "grain": 1
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Percentage CPU"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 3,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Percentage CPU"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "OS Disk Bandwidth Consumed Percentage",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "OS Disk Bandwidth Consumed Percentage"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Data Disk Bandwidth Consumed Percentage",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.compute/virtualmachinescalesets",
+                              "metricVisualization": {
+                                "displayName": "Data Disk Bandwidth Consumed Percentage"
+                              }
+                            }
+                          ],
+                          "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for azure-cft",
+                          "titleKind": 1,
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "disablePinning": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filters": {
+                    "MsPortalFx_TimeRange": {
+                      "model": {
+                        "format": "local",
+                        "granularity": "auto",
+                        "relative": "1440m"
+                      }
+                    }
+                  }
                 }
-            }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 0,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "ComponentId",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "TimeContext",
+                      "value": null,
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ResourceIds",
+                      "value": [
+                        "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                      ],
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ConfigurationId",
+                      "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Type",
+                      "value": "workbook",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "GalleryResourceType",
+                      "value": "microsoft.network/loadbalancers",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "PinName",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "StepSettings",
+                      "value": "{\"chartId\":\"workbookd486cfe9-d48c-4718-a98e-14326b2b2eca\",\"version\":\"MetricsItem/2.0\",\"size\":1,\"chartType\":3,\"resourceType\":\"microsoft.compute/virtualmachinescalesets\",\"metricScope\":0,\"resourceParameter\":\"BackendVMSS\",\"resourceIds\":[\"{BackendVMSS}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.compute/virtualmachinescalesets\",\"metric\":\"microsoft.compute/virtualmachinescalesets--Network In Total\",\"aggregation\":1,\"splitBy\":null},{\"namespace\":\"microsoft.compute/virtualmachinescalesets\",\"metric\":\"microsoft.compute/virtualmachinescalesets--Network Out Total\",\"aggregation\":1}],\"title\":\"Backend Pool Metric - VMSS (Network In Out)\",\"gridFormatType\":2,\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"Metric\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":false}},\"subtitleContent\":{\"columnMatch\":\"Aggregation\",\"formatOptions\":{\"showIcon\":true}},\"leftContent\":{\"columnMatch\":\"Value\",\"formatter\":12,\"formatOptions\":{\"palette\":\"auto\",\"showIcon\":true},\"numberFormat\":{\"unit\":17,\"options\":{\"maximumSignificantDigits\":3,\"maximumFractionDigits\":2}}},\"rightContent\":{\"columnMatch\":\"Timeline\",\"formatter\":10,\"formatOptions\":{\"showIcon\":true}},\"secondaryContent\":{\"columnMatch\":\"Name\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":true}},\"showBorder\":false,\"sortCriteriaField\":\"Name\",\"sortOrderField\":2},\"gridSettings\":{\"formatters\":[{\"columnMatch\":\"Subscription\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Name\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":\"Resource\",\"showIcon\":true}},{\"columnMatch\":\"Segment\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network In Total\",\"formatter\":8,\"formatOptions\":{\"palette\":\"orange\",\"linkColumn\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"linkTarget\":\"WorkbookTemplate\",\"linkIsContextBlade\":true,\"showIcon\":true,\"workbookContext\":null},\"numberFormat\":{\"unit\":2,\"options\":{\"style\":\"decimal\",\"useGrouping\":true,\"maximumFractionDigits\":1}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network In Total Timeline\",\"formatter\":8,\"formatOptions\":{\"palette\":\"blue\",\"showIcon\":true,\"aggregation\":\"Average\"},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\",\"maximumFractionDigits\":1}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network Out Total\",\"formatter\":5,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true},\"numberFormat\":{\"unit\":2,\"options\":{\"style\":\"decimal\",\"useGrouping\":false}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Network Out Total Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true},\"numberFormat\":{\"unit\":0,\"options\":{\"style\":\"decimal\"}}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows Timeline\",\"formatter\":10,\"formatOptions\":{\"palette\":\"coldHot\",\"showIcon\":true}},{\"columnMatch\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate Timeline\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Metric\",\"formatter\":1,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Aggregation\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Value\",\"formatter\":1,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Timeline\",\"formatter\":9,\"formatOptions\":{\"showIcon\":true}},{\"columnMatch\":\"Segment Field\",\"formatter\":5,\"formatOptions\":{\"showIcon\":true}}],\"rowLimit\":10000,\"labelSettings\":[{\"columnId\":\"microsoft.compute/virtualmachines--Network In Total\",\"label\":\"Network In Total (Sum)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network In Total Timeline\",\"label\":\"Network In Total (Sum) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network Out Total\",\"label\":\"Network Out Total (Sum)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Network Out Total Timeline\",\"label\":\"Network Out Total (Sum) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows\",\"label\":\"Inbound Flows (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Timeline\",\"label\":\"Inbound Flows (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate\",\"label\":\"Inbound Flows Maximum Creation Rate (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Inbound Flows Maximum Creation Rate Timeline\",\"label\":\"Inbound Flows Maximum Creation Rate (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows\",\"label\":\"Outbound Flows (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Timeline\",\"label\":\"Outbound Flows (Average) Timeline\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate\",\"label\":\"Outbound Flows Maximum Creation Rate (Average)\"},{\"columnId\":\"microsoft.compute/virtualmachines--Outbound Flows Maximum Creation Rate Timeline\",\"label\":\"Outbound Flows Maximum Creation Rate (Average) Timeline\"}]}}",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ParameterValues",
+                      "value": {
+                        "LoadBalancer": {
+                          "type": 5,
+                          "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft-lb",
+                          "displayName": "Load Balancer",
+                          "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                        },
+                        "BackenVMs": {
+                          "type": 5,
+                          "value": [],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "All",
+                          "displayName": " Backend VMs",
+                          "specialValue": [
+                            "value::all"
+                          ],
+                          "formattedValue": ""
+                        },
+                        "BackendVMSS": {
+                          "type": 5,
+                          "value": [
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
+                          ],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft, azure-cft (and 1 more)",
+                          "displayName": "Backend VMSS",
+                          "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
+                        },
+                        "SKU": {
+                          "type": 1,
+                          "value": "Standard",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Standard",
+                          "displayName": "SKU",
+                          "formattedValue": "Standard"
+                        },
+                        "TimeRange": {
+                          "type": 4,
+                          "value": {
+                            "durationMs": 86400000
+                          },
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Last 24 hours",
+                          "displayName": "Time Range",
+                          "formattedValue": "Last 24 hours"
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Location",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 4,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "DipAvailability",
+                              "aggregationType": 2,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Health Probe Status"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "PacketCount",
+                              "aggregationType": 1,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Packet Count"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "VipAvailability",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Data Path Availability"
+                              }
+                            }
+                          ],
+                          "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for azure-cft-lb",
+                          "titleKind": 1,
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            }
+                          },
+                          "timespan": {
+                            "relative": {
+                              "duration": 86400000
+                            },
+                            "showUTCTime": false,
+                            "grain": 1
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "DipAvailability",
+                              "aggregationType": 2,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Health Probe Status"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "PacketCount",
+                              "aggregationType": 1,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Packet Count"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                              },
+                              "name": "VipAvailability",
+                              "aggregationType": 4,
+                              "namespace": "microsoft.network/loadbalancers",
+                              "metricVisualization": {
+                                "displayName": "Data Path Availability"
+                              }
+                            }
+                          ],
+                          "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for azure-cft-lb",
+                          "titleKind": 1,
+                          "visualization": {
+                            "chartType": 2,
+                            "legendVisualization": {
+                              "isVisible": true,
+                              "position": 2,
+                              "hideSubtitle": false
+                            },
+                            "axisVisualization": {
+                              "x": {
+                                "isVisible": true,
+                                "axisType": 2
+                              },
+                              "y": {
+                                "isVisible": true,
+                                "axisType": 1
+                              }
+                            },
+                            "disablePinning": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 4,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "ComponentId",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "TimeContext",
+                      "value": null,
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ResourceIds",
+                      "value": [
+                        "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                      ],
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ConfigurationId",
+                      "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Type",
+                      "value": "workbook",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "GalleryResourceType",
+                      "value": "microsoft.network/loadbalancers",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "PinName",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "StepSettings",
+                      "value": "{\"chartId\":\"workbookd134607b-032e-45b7-998c-abcb0ad832ab\",\"version\":\"MetricsItem/2.0\",\"size\":1,\"chartType\":2,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceParameter\":\"LoadBalancer\",\"resourceIds\":[\"{LoadBalancer}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4,\"splitBy\":\"BackendIPAddress\"}],\"title\":\"Health Probe Status by Backend IP Address\",\"gridSettings\":{\"rowLimit\":10000}}",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ParameterValues",
+                      "value": {
+                        "LoadBalancer": {
+                          "type": 5,
+                          "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft-lb",
+                          "displayName": "Load Balancer",
+                          "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                        },
+                        "BackenVMs": {
+                          "type": 5,
+                          "value": [],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "All",
+                          "displayName": " Backend VMs",
+                          "specialValue": [
+                            "value::all"
+                          ],
+                          "formattedValue": ""
+                        },
+                        "BackendVMSS": {
+                          "type": 5,
+                          "value": [
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
+                          ],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft, azure-cft (and 1 more)",
+                          "displayName": "Backend VMSS",
+                          "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
+                        },
+                        "SKU": {
+                          "type": 1,
+                          "value": "Standard",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Standard",
+                          "displayName": "SKU",
+                          "formattedValue": "Standard"
+                        },
+                        "TimeRange": {
+                          "type": 4,
+                          "value": {
+                            "durationMs": 86400000
+                          },
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Last 24 hours",
+                          "displayName": "Time Range",
+                          "formattedValue": "Last 24 hours"
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Location",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 8,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "ComponentId",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "TimeContext",
+                      "value": null,
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ResourceIds",
+                      "value": [
+                        "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                      ],
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ConfigurationId",
+                      "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Type",
+                      "value": "workbook",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "GalleryResourceType",
+                      "value": "microsoft.network/loadbalancers",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "PinName",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "StepSettings",
+                      "value": "{\"chartId\":\"workbookd486cfe9-d48c-4718-a98e-14326b2b2eca\",\"version\":\"MetricsItem/2.0\",\"size\":4,\"chartType\":-1,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceParameter\":\"LoadBalancer\",\"resourceIds\":[\"{LoadBalancer}\"],\"timeContextFromParameter\":\"TimeRange\",\"timeContext\":{\"durationMs\":86400000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--VipAvailability\",\"aggregation\":4},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--SnatConnectionCount\",\"aggregation\":1},{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--SYNCount\",\"aggregation\":1}],\"title\":\"Load Balancer Key Metrics\",\"gridFormatType\":1,\"tileSettings\":{\"titleContent\":{\"columnMatch\":\"Metric\",\"formatter\":13,\"formatOptions\":{\"linkTarget\":null,\"showIcon\":false}},\"subtitleContent\":{\"columnMatch\":\"Aggregation\",\"formatOptions\":{\"showIcon\":true}},\"leftContent\":{\"columnMatch\":\"Value\",\"formatter\":12,\"formatOptions\":{\"palette\":\"auto\",\"linkColumn\":\"Name\",\"linkTarget\":\"Metrics\",\"showIcon\":true},\"numberFormat\":{\"unit\":17,\"options\":{\"style\":\"decimal\",\"useGrouping\":false,\"maximumFractionDigits\":2,\"maximumSignificantDigits\":3}}},\"rightContent\":{\"columnMatch\":\"Timeline\",\"formatter\":10,\"formatOptions\":{\"showIcon\":true}},\"showBorder\":false},\"gridSettings\":{\"rowLimit\":10000}}",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ParameterValues",
+                      "value": {
+                        "LoadBalancer": {
+                          "type": 5,
+                          "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft-lb",
+                          "displayName": "Load Balancer",
+                          "formattedValue": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                        },
+                        "BackenVMs": {
+                          "type": 5,
+                          "value": [],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "All",
+                          "displayName": " Backend VMs",
+                          "specialValue": [
+                            "value::all"
+                          ],
+                          "formattedValue": ""
+                        },
+                        "BackendVMSS": {
+                          "type": 5,
+                          "value": [
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft",
+                            "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
+                          ],
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "azure-cft, azure-cft (and 1 more)",
+                          "displayName": "Backend VMSS",
+                          "formattedValue": "'/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft','/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft'"
+                        },
+                        "SKU": {
+                          "type": 1,
+                          "value": "Standard",
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Standard",
+                          "displayName": "SKU",
+                          "formattedValue": "Standard"
+                        },
+                        "TimeRange": {
+                          "type": 4,
+                          "value": {
+                            "durationMs": 86400000
+                          },
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Last 24 hours",
+                          "displayName": "Time Range",
+                          "formattedValue": "Last 24 hours"
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Location",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
+                }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 8,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Network In",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Network Out",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Network (total)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Network In",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Network Out",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Network (total)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2,
+                            "disablePinning": true
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filters": {
+                    "MsPortalFx_TimeRange": {
+                      "model": {
+                        "format": "local",
+                        "granularity": "auto",
+                        "relative": "60m"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 12,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "CPU (average)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Percentage CPU",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "CPU (average)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2,
+                            "disablePinning": true
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filters": {
+                    "MsPortalFx_TimeRange": {
+                      "model": {
+                        "format": "local",
+                        "granularity": "auto",
+                        "relative": "60m"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 12,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Read Bytes",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Write Bytes",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Disk bytes (total)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Read Bytes",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Write Bytes",
+                              "aggregationType": 1,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Disk bytes (total)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2,
+                            "disablePinning": true
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filters": {
+                    "MsPortalFx_TimeRange": {
+                      "model": {
+                        "format": "local",
+                        "granularity": "auto",
+                        "relative": "60m"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 16,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "options",
+                      "value": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Read Operations/Sec",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Write Operations/Sec",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Disk operations/sec (average)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "sharedTimeRange",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+                  "settings": {
+                    "content": {
+                      "options": {
+                        "chart": {
+                          "metrics": [
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Read Operations/Sec",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            },
+                            {
+                              "resourceMetadata": {
+                                "id": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Compute/virtualMachineScaleSets/azure-cft"
+                              },
+                              "name": "Disk Write Operations/Sec",
+                              "aggregationType": 4,
+                              "metricVisualization": {
+                                "resourceDisplayName": "azure-cft"
+                              }
+                            }
+                          ],
+                          "title": "Disk operations/sec (average)",
+                          "titleKind": 2,
+                          "visualization": {
+                            "chartType": 2,
+                            "disablePinning": true
+                          },
+                          "openBladeOnClick": {
+                            "openBlade": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filters": {
+                    "MsPortalFx_TimeRange": {
+                      "model": {
+                        "format": "local",
+                        "granularity": "auto",
+                        "relative": "60m"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 16,
+                  "rowSpan": 4,
+                  "colSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "ComponentId",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "TimeContext",
+                      "value": null,
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ResourceIds",
+                      "value": [
+                        "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb"
+                      ],
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ConfigurationId",
+                      "value": "Community-Workbooks/Network Insights/LoadBalancerWorkbooks/NetworkInsights-LoadBalancerMetrics-Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Type",
+                      "value": "workbook",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "GalleryResourceType",
+                      "value": "microsoft.network/loadbalancers",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "PinName",
+                      "value": "Network Insights LoadBalancers Minified",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "StepSettings",
+                      "value": "{\"chartId\":\"workbook9f62d50f-d83c-4d05-9f9d-5e30eadcc3c2\",\"version\":\"MetricsItem/2.0\",\"size\":0,\"chartType\":2,\"resourceType\":\"microsoft.network/loadbalancers\",\"metricScope\":0,\"resourceIds\":[\"/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourceGroups/user-shshaik/providers/Microsoft.Network/loadBalancers/azure-cft-lb\"],\"timeContext\":{\"durationMs\":3600000},\"metrics\":[{\"namespace\":\"microsoft.network/loadbalancers\",\"metric\":\"microsoft.network/loadbalancers--DipAvailability\",\"aggregation\":4,\"splitBy\":null}],\"gridSettings\":{\"rowLimit\":10000}}",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "ParameterValues",
+                      "value": {
+                        "LoadBalancer": {
+                          "type": 5,
+                          "value": null,
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "<unset>",
+                          "displayName": "Load Balancer",
+                          "formattedValue": null
+                        },
+                        "BackenVMs": {
+                          "type": 5,
+                          "isPending": false,
+                          "isWaiting": true,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "<query pending>",
+                          "displayName": " Backend VMs",
+                          "formattedValue": ""
+                        },
+                        "BackendVMSS": {
+                          "type": 5,
+                          "isPending": false,
+                          "isWaiting": true,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "<query pending>",
+                          "displayName": "Backend VMSS",
+                          "formattedValue": ""
+                        },
+                        "SKU": {
+                          "type": 1,
+                          "isPending": false,
+                          "isWaiting": true,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "<query pending>",
+                          "displayName": "SKU",
+                          "formattedValue": ""
+                        },
+                        "TimeRange": {
+                          "type": 4,
+                          "value": {
+                            "durationMs": 86400000
+                          },
+                          "isPending": false,
+                          "isWaiting": false,
+                          "isFailed": false,
+                          "isGlobal": false,
+                          "labelValue": "Last 24 hours",
+                          "displayName": "Time Range",
+                          "formattedValue": "Last 24 hours"
+                        }
+                      },
+                      "isOptional": true
+                    },
+                    {
+                      "name": "Location",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/AppInsightsExtension/PartType/PinnedNotebookMetricsPart"
+                }
+              }
+            ]
+          }
+        ],
+        "metadata": {
+          "model": {}
         }
-    ]
+      }
+    }
+  ]
 }
