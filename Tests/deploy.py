@@ -1,6 +1,6 @@
 import time, os, sys
-from LB.utils import *
-from LB.var import *
+from Lib.utils import *
+from Lib.var import *
 
 #Get the service principal and secret values
 principal= sys.argv[1]
