@@ -1,5 +1,5 @@
 {"cftName": "azure-cft",
-"location": "eastus",
+"location_name": "eastus",
 "virnetworkId": "user-shshaik-vnet2",
 "workspaceName": "sshaik-law",
 "adminUsername": "demouser",
