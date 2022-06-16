@@ -21,11 +21,11 @@ def az_login(principal,password,tenantid):
         logging.exception("An exception was thrown!")
         return False
 
-def change_vm_param_file(param_file, azure_user_json):
+def update_param_file(param_file, azure_user_json):
     """Change vm deploy params dynamically as per user configuration."""
     param_file_handler = open(param_file, 'r')
     param_file_data = json.load(param_file_handler)
-    print("param_file_data",param_file_data)
+    #print("param_file_data",param_file_data)
     param_file_handler.close()
 
     # fetch user details from json
@@ -35,7 +35,7 @@ def change_vm_param_file(param_file, azure_user_json):
     azure_user_handler.close()
 
     # update params in cft deploy template
-    print("Azure Loc:", azure_user_data["location_name"])
+    #print("Azure Loc:", azure_user_data["location_name"])
     param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
     param_file_data["parameters"]["virtualNetworkId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]
     param_file_data["parameters"]["virtualNetworkName"]["value"] = azure_user_data["virnetworkId"]
@@ -56,7 +56,7 @@ def change_vm_param_file(param_file, azure_user_json):
     param_file_data["parameters"]["adminPassword"]["value"]=azure_user_data["adminPassword"]
     param_file_data["parameters"]["autoscaleDiagnosticLogsWorkspaceId"]["value"]="/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.operationalinsights/workspaces/"+azure_user_data["workspaceName"]
     
-    print(param_file_data)
+    #print(param_file_data)
     #Re-wrire the template
     jsonFile = open(param_file, "w+")
     jsonFile.write(json.dumps(param_file_data))
@@ -68,9 +68,9 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
     try:
         if resource == "cft":
             # update vm params as per user config
-            change_vm_param_file(param_file, azure_user_json)
+            update_param_file(param_file, azure_user_json)
         elif resource == "DB":
-            #change_db_param_files(template_file, param_file, azure_user_json)
+            #update_param_file(template_file, param_file, azure_user_json)
             print("Dashboard Creation!!!")            
 
         az_deploy= "az deployment group create --resource-group " + resource_group + " --template-file " + template_file + " --parameters " + param_file + " --output table " 
