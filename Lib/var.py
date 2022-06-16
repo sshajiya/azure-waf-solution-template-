@@ -11,9 +11,9 @@ vnet_name= azure_user_data["cftVnet"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
-NAP_TEST,LB_TEST,AutoScale_TEST = True
-#LB_TEST = True
-#AutoScale_TEST = True
+NAP_TEST = True
+LB_TEST = True
+AutoScale_TEST = True
 
 #Variable Declaration
 autoscale_template= "./Templates/nap-autoscale-ubuntu-dev.json"
