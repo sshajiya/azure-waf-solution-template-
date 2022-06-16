@@ -1,7 +1,8 @@
-{"cftName": "azure-cft",
+{
+"cftName": "azure-cft",
 "location": "eastus",
 "virnetworkId": "user-shshaik-vnet2",
-"workspaceName": "sshaik-law"
+"workspaceName": "sshaik-law",
 "adminUsername": "demouser",
 "adminPassword": "Demouser1234",
 "resourceGroup": "user-shshaik",
