@@ -15,7 +15,7 @@
             "name": "[parameters('dashboards_name')]",
             "location": "eastus",
             "tags": {
-                "hidden-title": "Dashboard-NAP-Test2"
+                "hidden-title": "[parameters('dashboards_name')]"
             },
             "properties": {
                 "lenses": [
