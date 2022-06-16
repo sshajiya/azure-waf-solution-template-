@@ -29,7 +29,7 @@ if az_id:
                     print("ERROR:  NGINX Static Page Verification is Failed!!!")
 
                 ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
-                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('nginx_conf_nap.conf','nginx.conf')
+                with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')
                 for cmd in [command_lst,command_lst2]:
                     exec_shell_cmd(ssh_id,cmd)
                     time.sleep(10)
