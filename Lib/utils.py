@@ -33,7 +33,7 @@ def change_vm_param_file(param_file, azure_user_json):
     azure_user_handler.close()
 
     # update params in cft deploy template
-    param_file_data["parameters"]["location"]["value"] = azure_user_data["location"]
+    param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
     param_file_data["parameters"]["virtualNetworkId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]
     param_file_data["parameters"]["virtualNetworkName"]["value"] = azure_user_data["virnetworkId"]
     param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["name"]= "basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
