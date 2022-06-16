@@ -25,14 +25,17 @@ def change_vm_param_file(param_file, azure_user_json):
     """Change vm deploy params dynamically as per user configuration."""
     param_file_handler = open(param_file, 'r')
     param_file_data = json.load(param_file_handler)
+    print("param_file_data",param_file_data)
     param_file_handler.close()
 
     # fetch user details from json
     azure_user_handler = open(azure_user_json,"r")
     azure_user_data = json.load(azure_user_handler)
+    
     azure_user_handler.close()
 
     # update params in cft deploy template
+    print("Azure Loc:", azure_user_data["location_name"])
     param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
     param_file_data["parameters"]["virtualNetworkId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]
     param_file_data["parameters"]["virtualNetworkName"]["value"] = azure_user_data["virnetworkId"]
