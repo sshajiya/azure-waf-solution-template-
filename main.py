@@ -20,7 +20,10 @@ if az_id:
         print(az_arm_deploy(resource_group,autoscale_template,autoscale_param))
         print(az_arm_deploy(resource_group,template_db,template_dbparam))
         print(az_get_cmd_op(http_rule))
-        print(az_get_cmd_op(ssh_rule))                 
+        print(az_get_cmd_op(ssh_rule))  
+        dashboard_info=az_get_cmd_op(db_verify)
+        if db_name in dashboard_info:
+            print("Dashboard Created Sucessufully")
         
     if TEST:
         #Get the instance details from Virtual machine scaleset
