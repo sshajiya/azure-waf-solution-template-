@@ -17,7 +17,7 @@ if az_id:
         az_arm_deploy(resource_group,autoscale_template,autoscale_param)
         az_get_cmd_op(http_rule)
         az_get_cmd_op(ssh_rule)
-        az_arm_deploy(resource_group,template_db,template_dbparam)
+        az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
         dashboard_info=az_get_cmd_op(db_verify)
         if db_name in dashboard_info:
             print("Dashboard Created Sucessufully")
