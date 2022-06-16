@@ -45,4 +45,4 @@ del_dashboard="az portal dashboard delete --name " + db_name + "  --resource-gro
 del_vmss_ip= " az network public-ip delete -g " + resource_group + " -n " + vmss_ip
 del_ssh= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n sshRule"
 del_http= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n httpRule"
-del_cfg=[del_vmss,del_ssh,del_http,del_vmss_lb,del_vmss_ip]
+del_cfg=[del_vmss,del_ssh,del_http,del_vmss_lb,del_vmss_ip,del_dashboard]
