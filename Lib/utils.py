@@ -1,10 +1,12 @@
-import subprocess
+import subprocess,os,sys
+path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
+sys.path.insert(0, path)
+from Lib.var import azure_user_json
 import paramiko
 from scp import SCPClient
 import requests,urllib,re
 from bs4 import BeautifulSoup
 import json
-from var import azure_user_json
 import logging
 
 
