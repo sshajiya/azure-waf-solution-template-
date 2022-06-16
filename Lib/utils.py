@@ -19,16 +19,53 @@ def az_login(principal,password,tenantid):
         logging.exception("An exception was thrown!")
         return False
 
+def change_vm_param_file(param_file, azure_user_json):
+    """Change vm deploy params dynamically as per user configuration."""
+    param_file_handler = open(param_file, 'r')
+    param_file_data = json.load(param_file_handler)
+    param_file_handler.close()
+
+    # fetch user details from json
+    azure_user_handler = open(azure_user_json,"r")
+    azure_user_data = json.load(azure_user_handler)
+    azure_user_handler.close()
+
+    # update params in cft deploy template
+    param_file_data["parameters"]["location"]["value"] = azure_user_data["location"]
+    param_file_data["parameters"]["virtualNetworkId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]
+    param_file_data["parameters"]["virtualNetworkName"]["value"] = azure_user_data["virnetworkId"]
+    param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["name"]= "basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+    param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["id"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft..Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+    param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["name"]= azure_user_data["virnetworkId"]+"-nic01"
+    param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["subnetId"]="/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]+"/subnets/default"
+    param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["nsgName"]="basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+    param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["nsgId"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft..Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+    param_file_data["parameters"]["publicIpAddressName"]["value"] = azure_user_data["cftName"]+"-ip"
+    param_file_data["parameters"]["backendPoolName"]["value"] = azure_user_data["cftName"]+"-bepool"
+    param_file_data["parameters"]["loadBalancerName"]["value"] = azure_user_data["cftName"]+"-lb"
+    param_file_data["parameters"]["inboundNatPoolId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/loadBalancers/"+azure_user_data["cftName"]+"-lb/inboundNatPools/natpool"
+    param_file_data["parameters"]["backendPoolId"]["value"] =  "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/loadBalancers/"+azure_user_data["cftName"]+"-lb/backendAddressPools/"+azure_user_data["cftName"]+"-bepool"
+    param_file_data["parameters"]["vmName"]["value"]=azure_user_data["cftName"]
+    param_file_data["parameters"]["virtualMachineScaleSetName"]["value"]=azure_user_data["cftName"]
+    param_file_data["parameters"]["adminUsername"]["value"]=azure_user_data["adminUsername"]
+    param_file_data["parameters"]["adminPassword"]["value"]=azure_user_data["adminPassword"]
+    param_file_data["parameters"]["autoscaleDiagnosticLogsWorkspaceId"]["value"]="/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.operationalinsights/workspaces/"+azure_user_data["workspaceName"]
+    
+    print(param_file_data)
+    #Re-wrire the template
+    jsonFile = open(param_file, "w+")
+    jsonFile.write(json.dumps(param_file_data))
+    jsonFile.close()
+
 #This function is generated to deploy the ARM template
 def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
     """Deploy resources in Azure using templates."""
     try:
         if resource == "cft":
             # update vm params as per user config
-            # change_vm_param_file(param_file, azure_user_json)
-            print("Create the Stack!!!") 
+            change_vm_param_file(param_file, azure_user_json)
         elif resource == "DB":
-            #change_lb_param_files(template_file, param_file, azure_user_json)
+            #change_db_param_files(template_file, param_file, azure_user_json)
             print("Dashboard Creation!!!")            
 
         az_deploy= "az deployment group create --resource-group " + resource_group + " --template-file " + template_file + " --parameters " + param_file + " --output table " 
