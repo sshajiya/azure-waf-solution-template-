@@ -85,9 +85,7 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
 #This function will execute az cli commmand and returns the output
 def az_get_cmd_op(cmd):
     try:
-        print("cmd:",cmd)
-        output = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)      
-        print(output)
+        output = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
         az_cmd_out =  output.stdout.decode("utf-8")
         az_cmd_err =  output.stderr.decode("utf-8")
         print(az_cmd_out,"\n\n",az_cmd_err)
