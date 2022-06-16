@@ -11,13 +11,15 @@ vnet_name= azure_user_data["cftVnet"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
-NAP_TEST = True
-LB_TEST = True
+NAP_TEST = False
+LB_TEST = False
 AutoScale_TEST = True
 
 #Variable Declaration
 autoscale_template= "nap-autoscale-ubuntu-dev.json"
 autoscale_param= "nap-autoscale-ubuntu-dev-params.json"
+template_db="dashboard.json"
+template_dbparam="dashboard-params.json
 #vnet_name= "user-shshaik-vnet2"
 #vmssName= "azure-cft"
 #vmss_lb= "azure-cft-lb"
