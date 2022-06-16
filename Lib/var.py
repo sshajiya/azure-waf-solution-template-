@@ -3,14 +3,15 @@ import json
 azure_user_json= "azure_user_params.json"
 azure_user_handler = open(azure_user_json, "r")
 azure_user_data = json.load(azure_user_handler)
-tenantid = azure_user_data["CLOUD_CONSOLE_TENANTID"]
-resource_group = azure_user_data["CLOUD_CONSOLE_RG"]
+tenantid = azure_user_data["tenandId"]
+resource_group = azure_user_data["resourceGroup"]
 username = azure_user_data["adminUsername"]
 vm_password = azure_user_data["adminPassword"]
-vnet_name= azure_user_data["cftVnet"]
+vnet_name= azure_user_data["virnetworkId"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
+
 NAP_TEST = True
 LB_TEST = True
 AutoScale_TEST = True
