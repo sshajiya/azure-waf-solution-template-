@@ -3,6 +3,12 @@ path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-templat
 sys.path.insert(0, path)
 
 
+
+NAP_TEST = True
+LB_TEST = True
+AutoScale_TEST = True
+
+#Variable Declaration
 azure_user_json= "Lib/azure_user_params.json"
 azure_user_handler = open(azure_user_json, "r")
 azure_user_data = json.load(azure_user_handler)
@@ -14,16 +20,12 @@ vnet_name= azure_user_data["virnetworkId"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
+db_name= azure_user_data["dashboard_name"]
 
-NAP_TEST = True
-LB_TEST = True
-AutoScale_TEST = True
-
-#Variable Declaration
-autoscale_template= "./Templates/nap-autoscale-ubuntu-dev.json"
-autoscale_param= "./Templates/nap-autoscale-ubuntu-dev-params.json"
-template_db= "./Templates/dashboard.json"
-template_dbparam = "./Templates/dashboard-params.json"
+autoscale_template= "Templates/nap-autoscale-ubuntu-dev.json"
+autoscale_param= "Templates/nap-autoscale-ubuntu-dev-params.json"
+template_db= "Templates/dashboard.json"
+template_dbparam = "Templates/dashboard-params.json"
 sg_name= "basicNsg" + vnet_name + "-nic01"
 http_rule= "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name httpRule --direction inbound --destination-port-range 80 --access allow --priority 102"
 ssh_rule=  "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name sshRule --direction inbound --destination-port-range 22 --access allow --priority 101"
@@ -35,8 +37,6 @@ command_lst2 = ["systemctl status nginx"]
 log_file= "./Log/vm_log.txt"
 apply_stress= ["for i in $(seq $(getconf _NPROCESSORS_ONLN)); do yes > /dev/null & done"]
 remove_stress=["killall yes"]
-ssh_id_lst=[]
-db_name= "Dashboard-NAP-WAF"
 db_verify="az portal dashboard show --name " + db_name + " --resource-group " + resource_group + " --output table"
 del_vmss= "az vmss delete  --name " + vmssName + " --resource-group " + resource_group + " --force-deletion yes"
 del_vmss_lb= "az network lb delete --name " + vmss_lb + "  --resource-group " + resource_group
