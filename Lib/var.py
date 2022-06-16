@@ -1,6 +1,7 @@
 import json,sys
 path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
 sys.path.insert(0, path)
+#from Lib.azure_user_params import *
 
 
 
