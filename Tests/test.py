@@ -1,7 +1,9 @@
-import time, os, sys, json, attackslib
-from utils import *
-from var import *
-import ast
+import time, os, sys, json, ast
+path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
+sys.path.insert(0, path)
+from Lib.utils import *
+from Lib.var import *
+from Lib.attackslib import *
 
 #Get the service principal and secret values
 principal= sys.argv[1]
