@@ -1,6 +1,7 @@
-import time, os, sys, json, attackslib
+import time, os, sys, json
 from utils import *
 from var import *
+import attackslib
 import ast
 
 #Get the service principal and secret values
