@@ -11,17 +11,15 @@ vnet_name= azure_user_data["cftVnet"]
 vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
-NAP_TEST = True
-LB_TEST = True
-AutoScale_TEST = True
+NAP_TEST,LB_TEST,AutoScale_TEST = True
+#LB_TEST = True
+#AutoScale_TEST = True
 
 #Variable Declaration
-autoscale_template= "nap-autoscale-ubuntu-dev.json"
-autoscale_param= "nap-autoscale-ubuntu-dev-params.json"
-#vnet_name= "user-shshaik-vnet2"
-#vmssName= "azure-cft"
-#vmss_lb= "azure-cft-lb"
-#vmss_ip= "azure-cft-ip"
+autoscale_template= "./Templates/nap-autoscale-ubuntu-dev.json"
+autoscale_param= "./Templates/nap-autoscale-ubuntu-dev-params.json"
+template_db= "./Templates/dashboard.json"
+template_dbparam = "./Templates/dashboard-params.json"
 sg_name= "basicNsg" + vnet_name + "-nic01"
 http_rule= "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name httpRule --direction inbound --destination-port-range 80 --access allow --priority 102"
 ssh_rule=  "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name sshRule --direction inbound --destination-port-range 22 --access allow --priority 101"
