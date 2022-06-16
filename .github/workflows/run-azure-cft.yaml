@@ -30,5 +30,5 @@ jobs:
       - name: Destroy Azure CFT
         run: |
           echo "Destroying the Infra into Azure Cloud Env"
-          #python destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
+          #python ${{secrets.RUNNER_PATH}}/Tests/destroy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}
       
