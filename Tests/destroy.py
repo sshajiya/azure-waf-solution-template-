@@ -15,6 +15,7 @@ if az_id:
     try:            
         print("Destroying the Infra.")  
         for service in del_cfg:
+            print(service)
             az_get_cmd_op(service) 
             time.sleep(7)
     except BaseException:
