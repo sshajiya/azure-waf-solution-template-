@@ -20,7 +20,7 @@ if az_id:
         
         if NAP_TEST:
             try:
-                '''
+                
                 turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
                 #NAP Functional Test
                 print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
@@ -35,7 +35,7 @@ if az_id:
                     exec_shell_cmd(ssh_id,cmd)
                     time.sleep(10)
                 #ssh_id.close() 
-                '''
+                
                 if vfy_nginx(vmss_ip_lst[0],chk_str):
                     print("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
                     print("NAP  Functionality Test with Invalid Attacks")
