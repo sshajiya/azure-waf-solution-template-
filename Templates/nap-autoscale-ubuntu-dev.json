@@ -330,7 +330,7 @@
         "[variables('loadBalancerId')]"
       ],
       "properties": {
-        "singlePlacementGroup": "[parameters('singlePlacementGroup')]",
+        "singlePlacementGroup": "false",
         "virtualMachineProfile": {
           "storageProfile": {
             "osDisk": {
@@ -388,9 +388,9 @@
                   "typeHandlerVersion": "1.0",
                   "autoUpgradeMinorVersion": false,
                   "settings": {
-                    "protocol": "[parameters('healthExtensionProtocol')]",
-                    "port": "[parameters('healthExtensionPort')]",
-                    "requestPath": "[parameters('healthExtensionRequestPath')]"
+                    "protocol": "http",
+                    "port": "80",
+                    "requestPath": "/"
                   }
                 }
               }
@@ -399,7 +399,7 @@
           "scheduledEventsProfile": {
             "terminateNotificationProfile": {
               "enable": true,
-              "notBeforeTimeout": "[parameters('instanceTermincationNotificationNotBeforeTimeout')]"
+              "notBeforeTimeout": "PT12M"
             }
           },
           "diagnosticsProfile": {
@@ -415,16 +415,16 @@
         },
         "orchestrationMode": "Uniform",
         "scaleInPolicy": "[parameters('scaleInPolicy')]",
-        "overprovision": "[parameters('overprovision')]",
+        "overprovision": false,
         "upgradePolicy": {
-          "mode": "[parameters('upgradePolicy')]"
+          "mode": "Manual"
         },
         "automaticRepairsPolicy": {
-          "enabled": "[parameters('autoRepairsPolicyEnabled')]",
-          "gracePeriod": "[parameters('gracePeriod')]"
+          "enabled": false,
+          "gracePeriod": "PT10M"
         },
-        "platformFaultDomainCount": "[parameters('platformFaultDomainCount')]",
-        "zoneBalance": "[parameters('zoneBalance')]"
+        "platformFaultDomainCount": "1",
+        "zoneBalance": "false"
       },
       "sku": {
         "name": "[parameters('instanceSize')]",
