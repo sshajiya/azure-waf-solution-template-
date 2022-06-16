@@ -85,13 +85,15 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
 #This function will execute az cli commmand and returns the output
 def az_get_cmd_op(cmd):
     try:
-        deploy = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)       
-        az_vm_out =  deploy.stdout.decode("utf-8")
-        az_vm_err =  deploy.stderr.decode("utf-8")
-        print(cmd,"\n\n",az_dp_out,"\n\n",az_dp_err)
-        return az_vm_out
+        print("cmd:",cmd)
+        output = subprocess.run(cmd, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)      
+        print(output)
+        az_cmd_out =  output.stdout.decode("utf-8")
+        az_cmd_err =  output.stderr.decode("utf-8")
+        print(az_cmd_out,"\n\n",az_cmd_err)
+        return az_cmd_out
     except:
-        return az_vm_err
+        return False
 
 #This function will connect to instances through SSH        
 def ssh_connect(host,port,username,password):
