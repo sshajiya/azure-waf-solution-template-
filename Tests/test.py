@@ -20,6 +20,7 @@ if az_id:
         
         if NAP_TEST:
             try:
+                '''
                 turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
                 #NAP Functional Test
                 print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
@@ -34,31 +35,32 @@ if az_id:
                     exec_shell_cmd(ssh_id,cmd)
                     time.sleep(10)
                 #ssh_id.close() 
+                '''
                 if vfy_nginx(vmss_ip_lst[0],chk_str):
                     print("Nginx App Protect dynamic page verification with Arcadia Application is Sucessfull!!!")
                     print("NAP  Functionality Test with Invalid Attacks")
                     print("======================      cross script      ========================")
-                    output = attackslib.cross_script_attack(vmss_ip_lst[0])
+                    output = cross_script_attack(vmss_ip_lst[0])
                     print("|\t",output)
                     assert "support ID" in output
                     print("===================      cross script attack blocked. ================")
                     print("======================      sql injection       ========================")
-                    output = attackslib.sql_injection_attack(vmss_ip_lst[0])
+                    output = sql_injection_attack(vmss_ip_lst[0])
                     print(output)
                     assert "support ID" in output
                     print("==================   sql injection script attack blocked.  ==================")
                     print("======================      command injection       ========================")
-                    output = attackslib.command_injection_attack(vmss_ip_lst[0])
+                    output = command_injection_attack(vmss_ip_lst[0])
                     print(output)
                     assert "support ID" in output
                     print("================      command injection attack blocked. =================")
                     print("======================      directory traversal      ========================")
-                    output = attackslib.directory_traversal_attack(vmss_ip_lst[0])
+                    output = directory_traversal_attack(vmss_ip_lst[0])
                     print(output)
                     assert "support ID" in output
                     print("=================    directory traversal attack blocked.    ===============")
                     print("======================      file inclusion      ========================")
-                    output = attackslib.file_inclusion_attack(vmss_ip_lst[0])
+                    output = file_inclusion_attack(vmss_ip_lst[0])
                     print(output)
                     assert "support ID" in output
                     print("=======================   file inclusion attack blocked.   ======================")
