@@ -35,7 +35,7 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
         deploy = subprocess.run(az_deploy, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
         az_dp_out =  deploy.stdout.decode("utf-8")
         az_dp_err =  deploy.stderr.decode("utf-8")
-        print(az_deploy,"\n\n",az_dp_out,"\n\n",az_dp_err)
+        print(az_dp_out,"\n\n",az_dp_err)
         return az_dp_out
     except:
         return az_dp_err
@@ -47,6 +47,7 @@ def az_get_cmd_op(cmd):
         print(deploy)
         az_vm_out =  deploy.stdout.decode("utf-8")
         az_vm_err =  deploy.stderr.decode("utf-8")
+        print(az_dp_out,"\n\n",az_dp_err)
         return az_vm_out
     except:
         return az_vm_err
