@@ -93,7 +93,7 @@
                               }
                             }
                           ],
-                          "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for [parameters('vmssLableName')]",
+                          "title": "[concat('Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for ', parameters('vmssLableName'))]",
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
@@ -180,7 +180,7 @@
                               }
                             }
                           ],
-                          "title": "Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for [parameters('vmssLableName')]",
+                          "title": "[concat('Avg Percentage CPU, Max Percentage CPU, and 2 other metrics for ', parameters('vmssLableName'))]",
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
@@ -393,7 +393,7 @@
                               }
                             }
                           ],
-                          "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for [parameters('vmssLableName')]-lb",
+                          "title": "[concat('Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for ', parameters('vmssLableName'),'-lb')]",
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
@@ -469,7 +469,7 @@
                               }
                             }
                           ],
-                          "title": "Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for [parameters('vmssLableName')]-lb",
+                          "title": "[concat('Min Health Probe Status, Sum Packet Count, and Avg Data Path Availability for ', parameters('vmssLableName'),'-lb')]",
                           "titleKind": 1,
                           "visualization": {
                             "chartType": 2,
@@ -557,7 +557,7 @@
                           "isWaiting": false,
                           "isFailed": false,
                           "isGlobal": false,
-                          "labelValue": "[parameters('vmssLableName')]-lb",
+                          "labelValue": "[concat(parameters('vmssLableName'),'-lb')]",
                           "displayName": "Load Balancer",
                           "formattedValue": "[parameters('loadBalancerName')]"
                         },
