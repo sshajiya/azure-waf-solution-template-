@@ -2,22 +2,22 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-		"dashboards_name": {
-			"defaultValue": "Dashboard-NAP-Test",
-			"type": "String"
-		},
-		"location": {
-			"type": "string"
-		},
-		"loadBalancerName": {
-			"type": "string"
-		},
-		"vmssName": {
-			"type": "string"
-		},
-		"vmssLableName": {
-			"type": "string"
-		}		
+    "dashboards_name": {
+      "defaultValue": "Dashboard-NAP-Test",
+      "type": "String"
+    },
+    "location": {
+      "type": "string"
+    },
+    "loadBalancerName": {
+      "type": "string"
+    },
+    "vmssName": {
+      "type": "string"
+    },
+    "vmssLableName": {
+      "type": "string"
+    }
   },
   "variables": {},
   "resources": [
@@ -293,7 +293,7 @@
                           "specialValue": [
                             "value::all"
                           ],
-                          "formattedValue": "
+                          "formattedValue": ""
                         },
                         "BackendVMSS": {
                           "type": 5,
@@ -573,7 +573,7 @@
                           "specialValue": [
                             "value::all"
                           ],
-                          "formattedValue": "
+                          "formattedValue": ""
                         },
                         "BackendVMSS": {
                           "type": 5,
@@ -702,7 +702,7 @@
                           "specialValue": [
                             "value::all"
                           ],
-                          "formattedValue": "
+                          "formattedValue": ""
                         },
                         "BackendVMSS": {
                           "type": 5,
@@ -770,7 +770,6 @@
                           "metrics": [
                             {
                               "resourceMetadata": {
-           							  "[parameters('vmssName')]"
                                 "id": "[parameters('vmssName')]"
                               },
                               "name": "Network In",
