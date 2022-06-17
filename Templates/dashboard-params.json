@@ -4,6 +4,15 @@
   "parameters": {
     "dashboards_name": {
       "value": "Dashboard-NAP-WAF"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "loadBalancerName": {
+      "value": "azure-cft-lb"
+    },
+    "vmssName": {
+      "value": "azure-cft"
     }
   }
 }
