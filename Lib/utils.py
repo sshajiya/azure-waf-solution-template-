@@ -62,7 +62,7 @@ def update_param_file(param_file,resource="cft"):
         param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
         param_file_data["parameters"]["loadBalancerName"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/loadBalancers/"+azure_user_data["cftName"]+"-lb"
         param_file_data["parameters"]["vmssName"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Compute/virtualMachineScaleSets/"+azure_user_data["cftName"]
-        
+        param_file_data["parameters"]["vmssLableName"]["value"] = azure_user_data["cftName"]
         
     #Re-wrire the template
     jsonFile = open(param_file, "w+")
