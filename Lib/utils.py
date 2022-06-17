@@ -40,11 +40,11 @@ def update_param_file(param_file,resource="cft"):
         param_file_data["parameters"]["virtualNetworkId"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]
         param_file_data["parameters"]["virtualNetworkName"]["value"] = azure_user_data["virnetworkId"]
         param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["name"]= "basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
-        param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["id"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft..Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+        param_file_data["parameters"]["networkSecurityGroups"]["value"][0]["id"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
         param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["name"]= azure_user_data["virnetworkId"]+"-nic01"
         param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["subnetId"]="/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/virtualNetworks/"+azure_user_data["virnetworkId"]+"/subnets/default"
         param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["nsgName"]="basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
-        param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["nsgId"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft..Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
+        param_file_data["parameters"]["networkInterfaceConfigurations"]["value"][0]["nsgId"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/networkSecurityGroups/"+"basicNsg"+azure_user_data["virnetworkId"]+"-nic01"
         param_file_data["parameters"]["publicIpAddressName"]["value"] = azure_user_data["cftName"]+"-ip"
         param_file_data["parameters"]["backendPoolName"]["value"] = azure_user_data["cftName"]+"-bepool"
         param_file_data["parameters"]["loadBalancerName"]["value"] = azure_user_data["cftName"]+"-lb"
@@ -60,8 +60,9 @@ def update_param_file(param_file,resource="cft"):
         # update params in Dashboard template
         param_file_data["parameters"]["dashboards_name"]["value"] = azure_user_data["dashboard_name"]
         param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
-        param_file_data["parameters"]["loadBalancerName"]["value"] = azure_user_data["cftName"]+"-lb"
-        param_file_data["parameters"]["vmssName"]["value"] = azure_user_data["cftName"]
+        param_file_data["parameters"]["loadBalancerName"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Network/loadBalancers/"+azure_user_data["cftName"]+"-lb"
+        param_file_data["parameters"]["vmssName"]["value"] = "/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.Compute/virtualMachineScaleSets/"+azure_user_data["cftName"]
+        
         
     #Re-wrire the template
     jsonFile = open(param_file, "w+")
