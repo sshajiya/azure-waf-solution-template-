@@ -14,7 +14,7 @@
     "vmssName": {
       "value": "/subscriptions/e1e590f6-555e-4dc0-8472-be7fab700b51/resourcegroups/user-shshaik/providers/microsoft.compute/virtualmachinescalesets/azure-cft"
     },
-    "vmssName": {
+    "vmssLableName": {
       "value": "azure-cft"
     }
   }
