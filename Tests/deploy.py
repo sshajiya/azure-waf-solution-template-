@@ -34,4 +34,4 @@ if az_id:
         logging.exception("An exception was thrown!")
 else:
     print("Error: Unable to connect to Azure CLI")
-'''
+
