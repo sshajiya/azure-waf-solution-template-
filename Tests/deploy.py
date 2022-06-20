@@ -11,6 +11,9 @@ password = sys.argv[2]
 
 print(text2art("Azure CFT Deploy",font="small"))
 print("Connecting to Azure CLI")
+
+print("\n Validating the user given params \n")
+validate_user_params()     
 '''
 az_id = az_login(principal,password,tenantid)
 if az_id:
