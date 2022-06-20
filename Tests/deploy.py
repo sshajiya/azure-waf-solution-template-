@@ -19,7 +19,7 @@ if az_id:
         """If login success, then deploy resources."""
         print("AZ Login Sucessfull!!")
 
-        print("\nValidating the user given params\n")
+        print("\nValidating the user given params")
         validate_user_params()   
         
         az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
