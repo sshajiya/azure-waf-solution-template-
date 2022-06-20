@@ -138,6 +138,12 @@ def ssh_connect(host,port,username,password):
         print("Unable to establish SSH connection: %s" % sshException)
         return False
 
+#Printing banner
+def banner(text, ch='=', length=78):
+    spaced_text = ' %s ' % text
+    banner = spaced_text.center(length, ch)
+    return banner
+
 #This function executes commands under ssh console
 def exec_shell_cmd(ssh_id,command_lst):
     try:
