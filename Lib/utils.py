@@ -1,8 +1,8 @@
-import subprocess,os,sys
+import subprocess,os,sys,paramiko
 path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
 sys.path.insert(0, path)
 from Lib.var import azure_user_json
-import paramiko
+from paramiko.ssh_exception import SSHException
 from scp import SCPClient
 import requests,urllib,re
 from bs4 import BeautifulSoup
