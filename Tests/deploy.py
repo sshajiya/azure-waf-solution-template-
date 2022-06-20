@@ -11,15 +11,17 @@ password = sys.argv[2]
 
 print(text2art("Azure CFT Deploy",font="small"))
 print("Connecting to Azure CLI")
+ 
 
-print("\n Validating the user given params \n")
-validate_user_params()     
-'''
 az_id = az_login(principal,password,tenantid)
 if az_id:
     try:
         """If login success, then deploy resources."""
         print("AZ Login Sucessfull!!")
+
+        print("\n Validating the user given params \n")
+        validate_user_params()   
+        
         az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
         #print(http_rule)
         az_get_cmd_op(http_rule)
