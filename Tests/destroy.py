@@ -4,6 +4,7 @@ sys.path.insert(0, path)
 from Lib.utils import *
 from Lib.var import *
 from Lib.attackslib import *
+from art import *
 
 #Get the service principal and secret values
 principal= sys.argv[1]
@@ -12,7 +13,8 @@ password = sys.argv[2]
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
 if az_id:
-    try:            
+    try:  
+        print(text2art("CFT Destroy",font="small"))
         print("Destroying the Infra.")  
         for service in del_cfg:
             print(service)
