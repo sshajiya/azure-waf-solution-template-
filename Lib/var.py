@@ -5,9 +5,9 @@ sys.path.insert(0, path)
 
 
 
-NAP_TEST = False
-LB_TEST = False
-AutoScale_TEST = False
+NAP_TEST = True
+LB_TEST = True
+AutoScale_TEST = True
 
 #Variable Declaration
 azure_user_json= "Lib/azure_user_params.json"
@@ -28,8 +28,8 @@ autoscale_param= "Templates/nap-autoscale-ubuntu-dev-params.json"
 template_db= "Templates/dashboard.json"
 template_dbparam = "Templates/dashboard-params.json"
 sg_name= "basicNsg" + vnet_name + "-nic01"
-http_rule= "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name httpRule --direction inbound --destination-port-range 80 --access allow --priority 102"
-ssh_rule=  "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name sshRule --direction inbound --destination-port-range 22 --access allow --priority 101"
+http_rule= "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name httpRule --direction inbound --destination-port-range 80 --access allow --priority 102 --output table"
+ssh_rule=  "az network nsg rule create -g " + resource_group + " --nsg-name " + sg_name + " --name sshRule --direction inbound --destination-port-range 22 --access allow --priority 101 --output table"
 get_vmss= "az vmss list-instance-connection-info   --resource-group " + resource_group + " --name " + vmssName + " --output table"
 chk_str="Arcadia Finance"
 chk_def = "Welcome to NGINX Plus on Azure"
