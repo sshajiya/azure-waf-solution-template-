@@ -27,7 +27,7 @@ def validate_user_params():
         azure_user_handler.close()         
         for ele in azure_user_data:
             print(ele,"\t:",azure_user_data[ele])
-        print("\nVerifying the provided virtual network existance - ",azure_user_data["virnetworkId"])
+        print("\nVnetId Verification - ",azure_user_data["virnetworkId"])
         vnet_show= "az network vnet show --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"] + " --output table"
         get_vnet= az_get_cmd_op(vnet_show)
         if "ResourceNotFound" in get_vnet:
