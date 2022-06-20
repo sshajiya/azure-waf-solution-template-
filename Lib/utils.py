@@ -150,7 +150,7 @@ def exec_shell_cmd(ssh_id,command_lst):
         for cmd in command_lst:
             stdin, stdout, stderr = ssh_id.exec_command(cmd)
             lines = stdout.readlines()
-            for line in lines: print(line)
+            #for line in lines: print(line)
         return True
     except SSHException as sshException:
         print("Unable to establish SSH connection: %s" % sshException)
