@@ -3,12 +3,15 @@ path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-templat
 sys.path.insert(0, path)
 from Lib.utils import *
 from Lib.var import *
+from art import *
 
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
 
+print(text2art("Azure CFT Deploy",font="small"))
 print("Connecting to Azure CLI")
+'''
 az_id = az_login(principal,password,tenantid)
 if az_id:
     try:
@@ -26,3 +29,4 @@ if az_id:
         logging.exception("An exception was thrown!")
 else:
     print("Error: Unable to connect to Azure CLI")
+'''
