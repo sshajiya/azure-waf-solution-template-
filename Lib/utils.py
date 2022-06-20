@@ -24,12 +24,11 @@ def az_login(principal,password,tenantid):
 def validate_user_params():
         azure_user_handler = open(azure_user_json,"r")
         azure_user_data = json.load(azure_user_handler)    
-        azure_user_handler.close()
-         
+        azure_user_handler.close()         
         for ele in azure_user_data:
-            print(ele)
-        #vnet verification
-        vnet_show= "az network vnet show --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"]
+            print(ele,"\t:",azure_user_data[ele])
+        print("\nVerifying the provided virtual network existance - ",azure_user_data["virnetworkId"])
+        vnet_show= "az network vnet show --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"] + " --output table"
         get_vnet= az_get_cmd_op(vnet_show)
         if "ResourceNotFound" in get_vnet:
             print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same")
@@ -40,8 +39,8 @@ def validate_user_params():
                   print(azure_user_data["virnetworkId"] ," Not created")
                   exit
         #Workspace verification
-        print("Workspace verification")
-        wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] 
+        print("\nWorkspace verification - " , azure_user_data["workspaceName"])
+        wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] + " --output table"
         get_wrkspace= az_get_cmd_op(wsg_show)  
         #print(get_wrkspace)
         if "ResourceNotFound" in get_wrkspace:
@@ -51,9 +50,7 @@ def validate_user_params():
             get_workspace= az_get_cmd_op(create_workspace)
             if "ResourceNotFound" in get_workspace:
                   print(azure_user_data["workspaceName"] ," Not created")
-                  exit
-            
-        
+                  exit         
         
         
 def update_param_file(param_file,resource="cft"):
