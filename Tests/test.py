@@ -5,6 +5,7 @@ from Lib.utils import *
 from Lib.var import *
 from Lib.attackslib import *
 
+
 #Get the service principal and secret values
 principal= sys.argv[1]
 password = sys.argv[2]
@@ -16,7 +17,14 @@ if az_id:
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)  
-        print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)        
+        print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)    
+        
+        if validate:
+            param_file_handler = open(param_file, 'r')
+            param_file_data = json.load(param_file_handler)
+            param_file_handler.close()
+            print(type(param_file_data))
+            print(param_file_data)
         
         if NAP_TEST:
             try:
