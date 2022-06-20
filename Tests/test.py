@@ -4,6 +4,7 @@ sys.path.insert(0, path)
 from Lib.utils import *
 from Lib.var import *
 from Lib.attackslib import *
+from art import *
 
 
 #Get the service principal and secret values
@@ -12,7 +13,8 @@ password = sys.argv[2]
 
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
-if az_id:             
+if az_id:          
+        c
         #Get the instance details from Virtual machine scaleset
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
@@ -21,7 +23,7 @@ if az_id:
         
         if NAP_TEST:
             try:
-                
+                print(text2art("NAP Functionality..",font="small"))
                 turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
                 #NAP Functional Test
                 print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
@@ -74,6 +76,7 @@ if az_id:
                 
         if LB_TEST:
             #Load balancer Test
+            print(text2art("LoadBalancer",font="small"))
             print("Load Balancer TEST with Fault Tolarance")
             turn_instance_state(str(vmss_port_list[1])[-2],"stop",vmssName,resource_group)
             time.sleep(10)
@@ -88,6 +91,7 @@ if az_id:
         if AutoScale_TEST:
             try:
                 #Auto-scale Test
+                print(text2art("Autoscale",font="small"))
                 print("Nginx App Protect WAF - AutoScale TEST ")
                 print("Current No of instances under VMSS:",vmssName,vmss_ip_lst,vmss_port_list)
                 print("Imposing HIGH TRAFFIC on available instances")
