@@ -16,18 +16,19 @@ az_id = az_login(principal,password,tenantid)
 if az_id:   
         print(text2art("CFT Testcase Execution",font="small"))
         #Get the instance details from Virtual machine scaleset
+        print(banner("TC-0 Infra Validation"))
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
         vmss_port_list=get_port_lst(inst_info)  
-        print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)       
+        print("VMSS with Instance Details:", vmss_ip_lst, vmss_port_list) 
+        print("Dashboard : ", db_name)       
+        dashboard_info=az_get_cmd_op(db_verify)
         
         if NAP_TEST:
             try:
-                print(banner("TC-1: NAP Functional Testing",font="small"))
-                turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
                 #NAP Functional Test
-                #print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
-                print(banner("NAP Static Page Verification"))
+                turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
+                print(banner("TC-1: NAP Static Page Verification"))
                 if vfy_nginx(vmss_ip_lst[0],chk_def):
                     print("NGINX Static Page Verification is Completed")
                 else:
@@ -42,7 +43,7 @@ if az_id:
                 
                 if vfy_nginx(vmss_ip_lst[0],chk_str):
                     print("Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!!")
-                    print(banner("TC-3: NAP Test with Invalid Attacks "))
+                    print(banner("TC-3: NAP Testing with malicious attacks"))
                     print("\t======================      cross script      ========================")
                     output = cross_script_attack(vmss_ip_lst[0])
                     print("|\t",output)
