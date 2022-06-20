@@ -19,17 +19,17 @@ if az_id:
         """If login success, then deploy resources."""
         print("AZ Login Sucessfull!!")
 
-        print("\nValidating the user given params")
+        print(banner("Validating the user given params"))
         validate_user_params()   
         
         az_arm_deploy(resource_group,autoscale_template,autoscale_param,resource="cft")
-        #print(http_rule)
         az_get_cmd_op(http_rule)
         az_get_cmd_op(ssh_rule)
         az_arm_deploy(resource_group,template_db,template_dbparam,resource="db")
-        dashboard_info=az_get_cmd_op(db_verify)
-        if db_name in dashboard_info:
-            print("Dashboard Created Sucessufully")
+        #dashboard_info=az_get_cmd_op(db_verify)
+        #if db_name in dashboard_info:
+        #    print("Dashboard Created Sucessufully")
+        print(banner("Deployment Completed"))
     except BaseException:
         logging.exception("An exception was thrown!")
 else:
