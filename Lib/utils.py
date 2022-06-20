@@ -21,6 +21,41 @@ def az_login(principal,password,tenantid):
         logging.exception("An exception was thrown!")
         return False
 
+def validate_user_params():
+        azure_user_handler = open(azure_user_json,"r")
+        azure_user_data = json.load(azure_user_handler)    
+        azure_user_handler.close()
+
+        for k,v in azure_user_data:
+            print(k," : ", v)
+        #vnet verification
+        vnet_show= "az network vnet show --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"]
+        get_vnet= az_get_cmd_op(vnet_show)  
+        if "ResourceNotFound" in get_vnet:
+            print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same)
+            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"]
+            create_vnet= az_get_cmd_op(create_vnet_cmd) 
+            get_vnet2= az_get_cmd_op(vnet_show)
+            print(get_vnet2.stdout.decode("utf-8"))
+            if "ResourceNotFound" in get_vnet2:
+                  print(azure_user_data["virnetworkId"] ," Not created")
+                  exit
+        #Workspace verification
+        wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] 
+        get_wrkspace= az_get_cmd_op(wsg_show)  
+        if "ResourceNotFound" in get_wrkspace:
+            print(azure_user_data["workspaceName"] , "is not exists!!, Creating the same)
+            create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] 
+            create_workspace= az_get_cmd_op(create_law_cmd) 
+            get_workspace= az_get_cmd_op(create_workspace)
+            print(get_workspace.stdout.decode("utf-8"))
+            if "ResourceNotFound" in get_workspace:
+                  print(azure_user_data["workspaceName"] ," Not created")
+                  exit
+            
+        
+        
+        
 def update_param_file(param_file,resource="cft"):
     
     """Change vm deploy params dynamically as per user configuration."""
