@@ -10,7 +10,7 @@ principal= sys.argv[1]
 password = sys.argv[2]
 
 print(text2art("Azure CFT Deploy",font="small"))
-print("Connecting to Azure CLI")
+print("Connecting to Azure CLI") 
  
 
 az_id = az_login(principal,password,tenantid)
