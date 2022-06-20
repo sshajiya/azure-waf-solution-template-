@@ -13,8 +13,8 @@ password = sys.argv[2]
 
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
-if az_id:          
-        print(banner("Validating the user given params"))
+if az_id:   
+        print(text2art("CFT Testcase Execution",font="small"))
         #Get the instance details from Virtual machine scaleset
         inst_info=az_get_cmd_op(get_vmss)
         vmss_ip_lst=get_ip(inst_info)
@@ -23,7 +23,7 @@ if az_id:
         
         if NAP_TEST:
             try:
-                print(text2art("NAP Functional Testing",font="small"))
+                print(banner("TC-1: NAP Functional Testing",font="small"))
                 turn_instance_state(str(vmss_port_list[1])[-1],"stop",vmssName,resource_group)
                 #NAP Functional Test
                 #print("NGINX Functionality Test with Static Page, Dynamic Page, mallicious attacks")
@@ -33,7 +33,7 @@ if az_id:
                 else:
                     print("ERROR:  NGINX Static Page Verification is Failed!!!")
                 
-                print(banner("NAP Dynamic Page Verification"))
+                print(banner("TC-2: NAP Dynamic Page Verification"))
                 ssh_id=ssh_connect(vmss_ip_lst[0],vmss_port_list[0],username,vm_password)
                 with SCPClient(ssh_id.get_transport()) as scp:  scp.put('Lib/nginx_conf_nap.conf','nginx.conf')
                 for cmd in [command_lst,command_lst2]:
@@ -42,7 +42,7 @@ if az_id:
                 
                 if vfy_nginx(vmss_ip_lst[0],chk_str):
                     print("Nginx App Protect dynamic page verification with Arcadia Application is Successfull!!!")
-                    print(banner("NAP Test with Invalid Attacks "))
+                    print(banner("TC-3: NAP Test with Invalid Attacks "))
                     print("\t======================      cross script      ========================")
                     output = cross_script_attack(vmss_ip_lst[0])
                     print("|\t",output)
@@ -75,9 +75,8 @@ if az_id:
                 print("Encountered a Problem")
                 raise
                 
-        if LB_TEST:
-            print(text2art("LoadBalancer Test",font="small"))                
-            print(banner("Load Balancer TEST with Fault Tolarance"))
+        if LB_TEST:            
+            print(banner("TC-4: Load Balancer TEST with Fault Tolarance"))
             turn_instance_state(str(vmss_port_list[1])[-2],"stop",vmssName,resource_group)
             time.sleep(10)
 
@@ -90,8 +89,7 @@ if az_id:
         
         if AutoScale_TEST:
             try:
-                print(text2art("Autoscale",font="small"))
-                print("Nginx App Protect WAF - AutoScale TEST ")
+                print(banner("TC-5: AutoScale TEST "))
                 print("Current No of instances under VMSS:",vmssName,vmss_ip_lst,vmss_port_list)
                 print("Imposing HIGH TRAFFIC on available instances")
                 vmss_port_list.reverse()
@@ -106,7 +104,7 @@ if az_id:
                 vmss_ip_lst=get_ip(inst_info)
                 print("Number of Instances after Imposing high traffic",vmss_ip_lst) 
                 if len(get_port_lst(inst_info)) > 2:
-                    print("Scaling Test is Completed Successfully")
+                    print("Auto-Scaling Test is Completed Successfully")
                 else:
                     print("Error: Scaling Test is Failed!!!")
                 for port in vmss_port_list:
