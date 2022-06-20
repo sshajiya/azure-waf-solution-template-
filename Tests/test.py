@@ -19,12 +19,11 @@ if az_id:
         vmss_port_list=get_port_lst(inst_info)  
         print("VMSS Instance Details:", vmss_ip_lst, vmss_port_list)    
         
-        if validate:
-            param_file_handler = open(param_file, 'r')
-            param_file_data = json.load(param_file_handler)
-            param_file_handler.close()
-            print(type(param_file_data))
-            print(param_file_data)
+        param_file_handler = open(param_file, 'r')
+        param_file_data = json.load(param_file_handler)
+        param_file_handler.close()
+        print(type(param_file_data))
+        print(param_file_data)
         
         if NAP_TEST:
             try:
