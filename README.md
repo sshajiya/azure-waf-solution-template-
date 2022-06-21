@@ -1,12 +1,13 @@
 # azure-waf-solution-template-
 
-Introduction:
+## Introduction:
 
 In Production-grade deployment it is always a challenge for anyone who wants to give a demo in their environment with a WAF deployment.  Usually, it takes at least a few weeks for an average team to design and implement a production-grade WAF in a cloud environment because for each cloud deployment virtual networking, infrastructure security, Virtual Machine images, auto-scaling, logging, monitoring, automation, and many more topics requires detailed analysis. Also, most of well-made WAF deployments follow a similar path and become similar at the end. To mitigate this time and effort, we came up with a conclusion that a proper WAF deployment can be templatized and automated. So, a team doesn’t need to spend much time on deployment and maintenance but starts to use a WAF from day zero. 
 In this article we introduced a project that implements a Cloud Formation templates to deploy production-grade WAF in Azure cloud just in a few clicks and few runs.The WAF is using NGINX App Protect official image which is available under AZURE marketplace that eliminates the need to manually prebuild the AMI for your WAF deployment. It contains all the necessary code and packages on top of the OS of your choice. Also, allows you to pay as you go for NGINX App Protect software instead of purchasing a year-long license. 
 
 
-Why Azure?
+## Why Azure?
+
 Globally, 90% of Fortune 500 companies are using Microsoft Azure to drive their business. Using deeply integrated Azure cloud services, enterprises can rapidly build, deploy, and manage simple to complex applications with ease. Azure supports a wide range of programming languages, frameworks, operating systems, databases, and devices, allowing enterprises to leverage tools and technologies they trust.
 Here are the reasons received from the customers who are deploying their deployments in Azure.
 •	Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) capabilities
@@ -14,11 +15,11 @@ Here are the reasons received from the customers who are deploying their deploym
 •	Integrated Environment with Other Microsoft Tools
 •	Cost Efficient and Interoperability
 
-Architecture:
+## Architecture:
 ![image](https://user-images.githubusercontent.com/39581520/174727809-8fde48cd-12eb-4d31-a428-1f7e83953418.png)
 
 
-Major components:
+### Major components:
 
 •	Auto-scaling data plane based on official NGINX App Protect AWS AMI images.
 o	The amount of incoming traffic and the configured rule sets by using the official NGINX App Protect AZURE AMIs to spin up new Virtual Machine instances. It also removes the operational headache and optimizes costs since WAF dynamically adjusts the amount of computing resources and charges a user on an as-you-go basis.
@@ -31,12 +32,12 @@ Therefore, these three components form a complete WAF solution that is easy to d
 
 ![image](https://user-images.githubusercontent.com/39581520/174728235-9e974956-6be9-4377-8bed-30990ec1ffff.png)
 
-Dashboard:
+## Dashboard:
 
 ![image](https://user-images.githubusercontent.com/39581520/174728292-7c9aa06a-377d-4a35-94d2-11d6863a25a5.png)
 
 
-Conclusion:
+## Conclusion:
 
 Therefore, the use of a template to deploy a cloud WAF allows to significantly reduce time spent on WAF deployment and maintenance. Also, it gives a complete and easy-to-use solution to deploy the resources and verify the NGINX solution in Azure platform in any location. Handy interfaces for configuration and visibility turn this project into a boxed solution allowing a user to easily operate a WAF and focus on application security.
 Please comment if you find useful to have this kind of solution in major public clouds marketplaces.
