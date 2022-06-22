@@ -89,7 +89,7 @@ if az_id:
             print(banner("TC-4: Load Balancer TEST with Fault Tolarance"))
             print(banner("+"))
             turn_instance_state(str(vmss_port_list[1])[-2],"stop",vmssName,resource_group)
-            time.sleep(10)
+            time.sleep(30)
 
             if vfy_nginx(vmss_ip_lst[0],chk_def):
                 print(banner("\t*** Load Balancer TEST with Fault Tolarance is Successfull ***\n"))
