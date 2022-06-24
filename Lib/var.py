@@ -45,4 +45,6 @@ del_dashboard="az portal dashboard delete --name " + db_name + "  --resource-gro
 del_vmss_ip= " az network public-ip delete -g " + resource_group + " -n " + vmss_ip
 del_ssh= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n sshRule"
 del_http= "az network nsg rule delete -g " + resource_group + " --nsg-name " + sg_name + " -n httpRule"
-del_cfg=[del_vmss,del_ssh,del_http,del_vmss_lb,del_vmss_ip,del_dashboard]
+del_vnetId=  "az network vnet delete --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"]
+del_wrkspace= "az monitor log-analytics workspace delete -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] 
+del_cfg=[del_vmss,del_ssh,del_http,del_vmss_lb,del_vmss_ip,del_dashboard,del_vnetId,del_wrkspace]
