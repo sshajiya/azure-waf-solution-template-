@@ -124,7 +124,10 @@ def az_get_cmd_op(cmd):
         az_cmd_out =  output.stdout.decode("utf-8")
         az_cmd_err =  output.stderr.decode("utf-8")
         print(az_cmd_out,"\n\n",az_cmd_err)
-        return az_cmd_out
+        if az_cmd_out:
+            return az_cmd_out
+        else:
+            return az_cmd_err
     except:
         return False
 
