@@ -33,7 +33,7 @@ def validate_user_params():
         print("get_vnet:",get_vnet)
         if "ResourceNotFound" in get_vnet:
             print(azure_user_data["virnetworkId"] , "is not exists!!, Creating the same")
-            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"]
+            create_vnet_cmd= "az network vnet create --name " + azure_user_data["virnetworkId"] + " -g " + azure_user_data["resourceGroup"] + " --output table"
             create_vnet= az_get_cmd_op(create_vnet_cmd)
             get_vnet2= az_get_cmd_op(vnet_show)
             if "ResourceNotFound" in get_vnet2:
@@ -41,12 +41,12 @@ def validate_user_params():
                   exit
         #Workspace verification
         print("\nWorkspace verification - " , azure_user_data["workspaceName"])
-        wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] + " --output table"
+        wsg_show= "az monitor log-analytics workspace show -g "  + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] + " --output table" 
         get_wrkspace= az_get_cmd_op(wsg_show)  
         #print(get_wrkspace)
         if "ResourceNotFound" in get_wrkspace:
             print(azure_user_data["workspaceName"] , "is not exists!!, Creating the same")
-            create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"] 
+            create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"]  + " --output table"
             create_workspace= az_get_cmd_op(create_law_cmd) 
             get_workspace= az_get_cmd_op(create_workspace)
             if "ResourceNotFound" in get_workspace:
