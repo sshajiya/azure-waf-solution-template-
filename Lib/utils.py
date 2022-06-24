@@ -113,7 +113,10 @@ def az_arm_deploy(resource_group, template_file, param_file, resource="cft"):
         az_dp_out =  deploy.stdout.decode("utf-8")
         az_dp_err =  deploy.stderr.decode("utf-8")
         print(az_dp_out,"\n\n",az_dp_err)
-        return az_dp_out
+        if az_dp_out:
+            return az_dp_out
+        else:
+            return az_dp_err
     except:
         return az_dp_err
 
@@ -154,7 +157,6 @@ def exec_shell_cmd(ssh_id,command_lst):
         for cmd in command_lst:
             stdin, stdout, stderr = ssh_id.exec_command(cmd)
             lines = stdout.readlines()
-            #for line in lines: print(line)
         return True
     except SSHException as sshException:
         print("Unable to establish SSH connection: %s" % sshException)
