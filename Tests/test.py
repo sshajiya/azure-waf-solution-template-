@@ -96,7 +96,7 @@ if az_id:
             else:
                 print(banner("\t*** Load Balancer TEST with Fault Tolarance is Failed!!! ***\n"))
             turn_instance_state(str(vmss_port_list[1])[-2],"start",vmssName,resource_group)
-            time.sleep(50)
+            time.sleep(60)
         
         if AutoScale_TEST:
             try:
