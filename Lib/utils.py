@@ -166,6 +166,7 @@ def exec_shell_cmd(ssh_id,command_lst):
 def turn_instance_state(inst_num,action,vmssName,resource_grp):
     try:
         vm_action= "az vmss " + str(action) + " --instance-ids " + str(inst_num) + " --name "  + vmssName + " --resource-group " + resource_grp + "  --no-wait"
+        print(vm_action)
         get_action = subprocess.run(vm_action, shell = True, stdout=subprocess.PIPE, stderr = subprocess.PIPE)
         print(get_action)
         return True
