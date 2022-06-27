@@ -7,7 +7,7 @@ from scp import SCPClient
 import requests,urllib,re
 from bs4 import BeautifulSoup
 import json
-import logging
+import logging,socket
 
 
 #Methods
@@ -141,8 +141,8 @@ def ssh_connect(host,port,username,password):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, port, username, password)
         return ssh;
-    except SSHException as sshException:
-        print("Unable to establish SSH connection: %s" % sshException)
+    except (paramiko.SSHException,socket.error) as sshException:
+        print("Unable to establish SSH connection:" , sshException)
         return False
 
 #Printing banner
