@@ -1,9 +1,6 @@
 import json,sys
 path= "/home/runner/work/azure-waf-solution-template-/azure-waf-solution-template-"
 sys.path.insert(0, path)
-#from Lib.azure_user_params import *
-
-
 
 NAP_TEST = True
 LB_TEST = True
@@ -22,8 +19,6 @@ vmssName= azure_user_data["cftName"]
 vmss_lb= azure_user_data["cftName"] + "-lb"
 vmss_ip= azure_user_data["cftName"] + "-ip"
 db_name= azure_user_data["dashboard_name"]
-i=1;max_iter=5
-
 autoscale_template= "Templates/nap-autoscale-ubuntu-dev.json"
 autoscale_param= "Templates/nap-autoscale-ubuntu-dev-params.json"
 template_db= "Templates/dashboard.json"
