@@ -143,7 +143,7 @@ def ssh_connect(host,port,username,password):
         return ssh;
     except (paramiko.SSHException,socket.error) as sshException:
         print("Unable to establish SSH connection:" , sshException)
-        return False
+        return "retry"
 
 #Printing banner
 def banner(text, ch='=', length=78):
