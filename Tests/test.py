@@ -126,7 +126,7 @@ if az_id:
                     print("Error: Scaling Test is Failed!!!")
                 for port in vmss_port_list:
                     ssh_id=ssh_connect(vmss_ip_lst[0],port,username,vm_password)
-                    exec_shell_cmd(ssh_id,remove_stress)
+                    if ssh_id != "retry": exec_shell_cmd(ssh_id,remove_stress)
             except SSHException as sshException:
                 print(banner("Unable to establish SSH connection: %s" % sshException))
 else:
