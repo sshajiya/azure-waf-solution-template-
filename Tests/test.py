@@ -14,6 +14,9 @@ password = sys.argv[2]
 print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
 if az_id:   
+        ssh_id=ssh_connect("20.115.1.72",50000,username,vm_password)
+        
+    '''
         print(text2art("CFT Testcase Execution",font="small"))
         #Get the instance details from Virtual machine scaleset
         print(banner("+"))
@@ -128,5 +131,6 @@ if az_id:
                     exec_shell_cmd(ssh_id,remove_stress)
             except SSHException as sshException:
                 print(banner("Unable to establish SSH connection: %s" % sshException))
+    '''
 else:
     print("Error: Unable to connect to Azure CLI")
