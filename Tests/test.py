@@ -16,6 +16,9 @@ az_id = az_login(principal,password,tenantid)
 if az_id:   
         ssh_id=ssh_connect("20.115.1.72",50000,username,vm_password)
         print("sshId: ",ssh_id)
+        if ssh_id == "retry":
+                print("Trying one more time")
+        
         '''
         print(text2art("CFT Testcase Execution",font="small"))
         #Get the instance details from Virtual machine scaleset
