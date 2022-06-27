@@ -46,7 +46,7 @@ def validate_user_params():
         #print(get_wrkspace)
         if "ResourceNotFound" in get_wrkspace:
             print(azure_user_data["workspaceName"] , "is not exists!!, Creating the same")
-            create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"]  + " --output table"
+            create_law_cmd= "az monitor log-analytics workspace create --location " + azure_user_data["location_name"]  + " -g " + azure_user_data["resourceGroup"] + " --workspace-name " + azure_user_data["workspaceName"]
             create_workspace= az_get_cmd_op(create_law_cmd) 
             get_workspace= az_get_cmd_op(create_workspace)
             if "ResourceNotFound" in get_workspace:
