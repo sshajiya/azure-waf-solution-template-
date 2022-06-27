@@ -15,6 +15,7 @@ print("Connecting to Azure CLI")
 az_id = az_login(principal,password,tenantid)
 if az_id:   
         ssh_id=ssh_connect("20.115.1.72",50000,username,vm_password)
+        print("sshId: ",ssh_id)
         '''
         print(text2art("CFT Testcase Execution",font="small"))
         #Get the instance details from Virtual machine scaleset
