@@ -16,7 +16,7 @@ jobs:
           python -m pip install art
           python -m pip install azure-cli==2.32.0
           az --version
-          az config set extension.use_dynamic_install=yes_without_prompt
+          az config set extension.use_dynamic_install=yes_without_prompt 
       - name: Deploy Azure CFT
         run: |
           python ${{secrets.RUNNER_PATH}}/Tests/deploy.py ${{secrets.AZURE_SP}} ${{secrets.AZURE_PWD}}          
