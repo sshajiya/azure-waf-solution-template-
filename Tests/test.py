@@ -95,11 +95,14 @@ if az_id:
                 print(banner("\t*** Load Balancer TEST with Fault Tolarance is Successfull ***\n"))
             else:
                 print(banner("\t*** Load Balancer TEST with Fault Tolarance is Failed!!! ***\n"))
-            turn_instance_state(str(vmss_port_list[1])[-2],"start",vmssName,resource_group)
-            time.sleep(60)
+            turn_instance_state(str(vmss_port_list[1])[-2],"restart",vmssName,resource_group)
         
         if AutoScale_TEST:
             try:
+                print("\n Make sure both the instances are UP")
+                turn_instance_state(str(vmss_port_list[1])[-1],"start",vmssName,resource_group)
+                turn_instance_state(str(vmss_port_list[1])[-2],"start",vmssName,resource_group)
+                time.sleep(60)
                 print(banner("+"))
                 print(banner("TC-5: AutoScale TEST "))
                 print(banner("+"))
