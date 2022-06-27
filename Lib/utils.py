@@ -89,7 +89,7 @@ def update_param_file(param_file,resource="cft"):
         param_file_data["parameters"]["adminPassword"]["value"]=azure_user_data["adminPassword"]
         param_file_data["parameters"]["autoscaleDiagnosticLogsWorkspaceId"]["value"]="/subscriptions/"+azure_user_data["subscriptionId"]+"/resourceGroups/"+azure_user_data["resourceGroup"]+"/providers/Microsoft.operationalinsights/workspaces/"+azure_user_data["workspaceName"]
     
-    elif resource == "cft":
+    elif resource == "db":
         # update params in Dashboard template
         param_file_data["parameters"]["dashboards_name"]["value"] = azure_user_data["dashboard_name"]
         param_file_data["parameters"]["location"]["value"] = azure_user_data["location_name"]
