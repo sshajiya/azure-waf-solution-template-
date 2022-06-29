@@ -4,11 +4,9 @@ on:
   #pull_request: {branches: master}
   workflow_dispatch:
     inputs:
-      release-version:
-        description: 'Release version tag'
-        default: 'v1.0.0'
-        required: true
-  
+      msg: 
+        description: 'Check'
+        default: 'trigger the workflow'  
 jobs:
   deploy-azure-arm:
     runs-on: ubuntu-latest
