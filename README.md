@@ -37,13 +37,6 @@ Therefore, these three components form a complete WAF solution that is easy to d
 ![image](https://user-images.githubusercontent.com/39581520/174728292-7c9aa06a-377d-4a35-94d2-11d6863a25a5.png)
 
 
-## Conclusion:
-
-Therefore, the use of a template to deploy a cloud WAF allows to significantly reduce time spent on WAF deployment and maintenance. Also, it gives a complete and easy-to-use solution to deploy the resources and verify the NGINX solution in Azure platform in any location. Handy interfaces for configuration and visibility turn this project into a boxed solution allowing a user to easily operate a WAF and focus on application security.
-Please comment if you find useful to have this kind of solution in major public clouds marketplaces.
-It is a community project so far, and we need as much feedback as possible to steer one properly. Feel free to give it a try and leave feedback here or at the project's git repository.
-
-
 ## How to Run:
 
 * On GitHub.com, navigate to the main page of the repository.
@@ -51,4 +44,10 @@ It is a community project so far, and we need as much feedback as possible to st
 * In the left sidebar, click the workflow you want to run.
 * Above the list of workflow runs, select Run workflow.
 * Use the Branch dropdown to select the workflow's branch, and type the input parameters.
+
+## Conclusion:
+
+Therefore, the use of a template to deploy a cloud WAF allows to significantly reduce time spent on WAF deployment and maintenance. Also, it gives a complete and easy-to-use solution to deploy the resources and verify the NGINX solution in Azure platform in any location. Handy interfaces for configuration and visibility turn this project into a boxed solution allowing a user to easily operate a WAF and focus on application security.
+Please comment if you find useful to have this kind of solution in major public clouds marketplaces.
+It is a community project so far, and we need as much feedback as possible to steer one properly. Feel free to give it a try and leave feedback here or at the project's git repository.
 
