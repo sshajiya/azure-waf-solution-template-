@@ -46,8 +46,6 @@ It is a community project so far, and we need as much feedback as possible to st
 
 ## How to Run:
 
-***
-
 * On GitHub.com, navigate to the main page of the repository.
 * Under your repository name, click Actions.
 * In the left sidebar, click the workflow you want to run.
