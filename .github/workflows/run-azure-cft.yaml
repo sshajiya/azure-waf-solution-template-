@@ -1,7 +1,5 @@
 name: Cloud Formation Template Deployment in Azure
 on:
-  #push: {branches: master}
-  #pull_request: {branches: master}
   workflow_dispatch:
     inputs:
       msg: 
