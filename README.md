@@ -44,4 +44,13 @@ Please comment if you find useful to have this kind of solution in major public 
 It is a community project so far, and we need as much feedback as possible to steer one properly. Feel free to give it a try and leave feedback here or at the project's git repository.
 
 
+## How to Run:
+
+***
+
+* On GitHub.com, navigate to the main page of the repository.
+* Under your repository name, click Actions.
+* In the left sidebar, click the workflow you want to run.
+* Above the list of workflow runs, select Run workflow.
+* Use the Branch dropdown to select the workflow's branch, and type the input parameters.
 
