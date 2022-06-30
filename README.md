@@ -40,10 +40,9 @@ Therefore, these three components form a complete WAF solution that is easy to d
 ## How to Run:
 
 * Add the below variables under github-->secrets
-** AZURE_SP --> Azure service principle
-** AZURE_PWD --> Azure client password
-** RUNNER_PATH --> github runner path
-
+   * AZURE_SP --> Azure service principle
+   * AZURE_PWD --> Azure client password
+   * RUNNER_PATH --> github runner path
 * On GitHub.com, navigate to the main page of the repository.
 * Under your repository name, click Actions.
 * In the left sidebar, click the workflow you want to run.
