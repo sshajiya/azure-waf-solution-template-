@@ -39,10 +39,15 @@ Therefore, these three components form a complete WAF solution that is easy to d
 
 ## How to Run:
 
+* Pre-requisites:
+  * you should have the admin privillages to your azure resource group.
+  * Login to azure portal (portal.azure.com)
+  * Create the service principle through Az Cli. (how to create the service principle (#https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli))
 * Add the below variables under github-->secrets
    * AZURE_SP --> Azure service principle
    * AZURE_PWD --> Azure client password
    * RUNNER_PATH --> github runner path
+* Add your resource group and other params under Lib/azure-user-params file.
 * On GitHub.com, navigate to the main page of the repository.
 * Under your repository name, click Actions.
 * In the left sidebar, click the workflow you want to run.
