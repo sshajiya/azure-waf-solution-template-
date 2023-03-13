@@ -16,7 +16,7 @@ jobs:
           python -m pip install beautifulsoup4
           python -m pip install paramiko
           python -m pip install art
-          python -m pip install azure-cli==2.32.0
+          python -m pip install azure-cli==2.44.0
           az --version
           az config set extension.use_dynamic_install=yes_without_prompt 
       - name: Deploy Azure CFT
