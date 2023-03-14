@@ -2,7 +2,7 @@
 "location_name": "eastus",
 "dashboard_name": "Dashboard-NAP-WAF",
 "virnetworkId": "user-shshaik-vnet4",
-"workspaceName": "sshaik-law2",
+"workspaceName": "sshaik-law",
 "adminUsername": "demouser",
 "adminPassword": "Demouser1234",
 "resourceGroup": "user-shshaik",
